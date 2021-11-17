@@ -23,7 +23,7 @@ public class User {
         this.password=password;
         this.fullName=fullName;
         this.email=email;
-        this.status=true;
+        this.status=false;
         this.player= new Player(userName);
     }
 
