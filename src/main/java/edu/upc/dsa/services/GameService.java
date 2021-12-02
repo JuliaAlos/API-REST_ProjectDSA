@@ -36,7 +36,7 @@ public class GameService {
     @ApiOperation(value = "Add user", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Create",response=UserTO.class),
-            @ApiResponse(code = 409, message = "Conflict (user already registered)")
+            @ApiResponse(code = 409, message = "Conflict (user already registred)")
 
     })
 

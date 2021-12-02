@@ -1,11 +1,16 @@
 package edu.upc.dsa.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private String playerName;
     private Integer maxDistance;
     private String rol;
     private Integer timeOfFlight;
     private Integer bitcoins;
+    private List<Plane> listPlanes = new ArrayList<>();
+    private List<Insignia> listInsignias = new ArrayList<>();
 
     public Player(){}
     public Player(String playerName){
@@ -58,6 +63,25 @@ public class Player {
 
     public void setBitcoins(Integer bitcoins) {
         this.bitcoins = bitcoins;
+    }
+
+    public List<Insignia> getListInsignias() {
+        return listInsignias;
+    }
+
+    public List<Plane> getListPlanes() {
+        return listPlanes;
+    }
+
+    /**********************************************************************
+     **********************************************************************/
+
+    public void addPlane(Plane plane){
+        this.listPlanes.add(plane);
+    }
+
+    public void addInsignia (Insignia insignia){
+        this.listInsignias.add(insignia);
     }
 }
 
