@@ -1,5 +1,7 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.models.Insignia;
+import edu.upc.dsa.models.Plane;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
 
@@ -10,12 +12,17 @@ public class GameManagerImpl implements GameManager{
 
     private static GameManagerImpl manager;
     private HashMap<String, User> gameUsers;
+    private HashMap<String, Plane> gamePlanes; //List of all available planes in the game, with their default configuration.
+    private HashMap<String, Insignia> gameInsignias;
     final static Logger logger = Logger.getLogger(GameManagerImpl.class);
 
 
 
     private GameManagerImpl(){
+
         this.gameUsers = new HashMap<>();
+        this.gamePlanes = new HashMap<>();
+        this.gameInsignias = new HashMap<>();
     }
 
     public static GameManagerImpl getInstance(){
@@ -124,6 +131,72 @@ public class GameManagerImpl implements GameManager{
         }
         logger.info(userName+" not found");
         return false;
+    }
+
+    @Override
+    public List<Plane> getAllPlanes() {
+        logger.info("Get all planes in the system.");
+        return new ArrayList<Plane>(this.gamePlanes.values());
+    }
+
+    @Override
+    public List<Insignia> getAllInsignias() {
+        logger.info("Get all insignias in the system.");
+        return new ArrayList<Insignia>(this.gameInsignias.values());
+    }
+
+    @Override
+    public void addPlane(Plane plane) {
+        logger.info("Adding a new plane to the system.");
+        this.gamePlanes.put(plane.getModel(), plane);
+        logger.info("Plane "+ plane.getModel() + " added successfully to the system.");
+    }
+
+    @Override
+    public void addInsignia(Insignia insignia) {
+        logger.info("Adding a new insignia to the system.");
+        this.gameInsignias.put(insignia.getName(), insignia);
+        logger.info("Insignia " + insignia.getName() + "addes successfully to the system.");
+    }
+
+    @Override
+    public Plane getPlaneByModel(String model) {
+        logger.info("Get plane which model is: ." + model);
+        return this.gamePlanes.get(model);
+    }
+
+    @Override
+    public Insignia getInsigniaByName(String nameInsignia) {
+        return this.gameInsignias.get(nameInsignia);
+    }
+
+    @Override
+    public void addPlaneToUser (String username, String planeModel) {
+        logger.info("Add a new plane to the user.");
+        User user = this.gameUsers.get(username);
+        Plane plane = this.gamePlanes.get(planeModel);
+        user.getPlayer().addPlane(plane);
+        logger.info("Plane " + planeModel + " added successfully to player " + username);
+    }
+
+    @Override
+    public void addInsigniaToUser (String username, Insignia insignia) {
+        logger.info("Add a new insignia to the user.");
+        User user = this.gameUsers.get(username);
+        user.getPlayer().addInsignia(insignia);
+        logger.info("Insignia " + insignia.getName() + " added successfully to player " + username);
+    }
+
+    @Override
+    public List<Plane> getListPlanesUser (String username){
+        logger.info("Get list of planes of the user " + username);
+        return this.gameUsers.get(username).getPlayer().getListPlanes();
+    }
+
+    @Override
+    public List<Insignia> getListInsigniasUser(String username) {
+        logger.info("Get list of insignias of the user " + username);
+        return this.gameUsers.get(username).getPlayer().getListInsignias();
     }
 
 
