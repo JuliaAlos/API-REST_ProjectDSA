@@ -180,11 +180,12 @@ public class GameManagerImpl implements GameManager{
     }
 
     @Override
-    public void addInsigniaToUser (String username, Insignia insignia) {
+    public void addInsigniaToUser (String username, String insigniaName) {
         logger.info("Add a new insignia to the user.");
         User user = this.gameUsers.get(username);
+        Insignia insignia = this.gameInsignias.get(insigniaName);
         user.getPlayer().addInsignia(insignia);
-        logger.info("Insignia " + insignia.getName() + " added successfully to player " + username);
+        logger.info("Insignia " + insigniaName+ " added successfully to player " + username);
     }
 
     @Override
@@ -199,5 +200,24 @@ public class GameManagerImpl implements GameManager{
         return this.gameUsers.get(username).getPlayer().getListInsignias();
     }
 
+    @Override
+    public Boolean existPlane (String planeModel){
+        if(this.gamePlanes.containsKey(planeModel)){
+            logger.info(planeModel+" found");
+            return true;
+        }
+        logger.info(planeModel+" not found");
+        return false;
+    }
+
+    @Override
+    public Boolean existInsignia (String insigniaName){
+        if(this.gamePlanes.containsKey(insigniaName)){
+            logger.info(insigniaName+" found");
+            return true;
+        }
+        logger.info(insigniaName+" not found");
+        return false;
+    }
 
 }

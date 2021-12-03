@@ -22,12 +22,14 @@ public interface GameManager {
 
     List<Plane> getAllPlanes ();
     List <Insignia> getAllInsignias();
+    Boolean existPlane(String planeModel);
+    Boolean existInsignia(String insiginaName);
     void addPlane (Plane plane); //Adds a plane to the system.
     void addInsignia (Insignia insignia); //Adds an insignia to the system.
     Plane getPlaneByModel (String model);
     Insignia getInsigniaByName (String nameInsignia);
     void addPlaneToUser (String username, String planeModel); //Adds a plane to a user.
-    void addInsigniaToUser (String username, Insignia insignia);
+    void addInsigniaToUser (String username, String insigniaName);
     List<Plane> getListPlanesUser (String username);
     List<Insignia> getListInsigniasUser (String username);
 
