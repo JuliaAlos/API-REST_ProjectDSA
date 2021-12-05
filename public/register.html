@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <script> 
+        $(document).ready(function(){
+            $(".loader-container").hide();
+            $(".btn").click(function(){
+                $(".loader-container").show();
+            });
+        });
+    </script>
+  </head>
+  <body>
+
+      <div class="register-form">
+        <h1>Register</h1>
+
+        <div class="textbox">
+          <i class="fas fa-gamepad"></i>
+          <input type="text" placeholder="Username">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-redo-alt"></i>
+          <input type="password" placeholder="Confirm password">
+        </div>
+
+        <input type="submit" class="btn" value="SING UP NOW">
+        
+      </div>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+
+
+
+  </body>
+</html>
