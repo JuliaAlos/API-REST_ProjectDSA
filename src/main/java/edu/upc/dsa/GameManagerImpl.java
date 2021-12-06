@@ -132,7 +132,7 @@ public class GameManagerImpl implements GameManager{
         logger.info(userName+" not found");
         return false;
     }
-
+/*
     @Override
     public List<Plane> getAllPlanes() {
         logger.info("Get all planes in the system.");
@@ -198,6 +198,8 @@ public class GameManagerImpl implements GameManager{
         logger.info("Get list of insignias of the user " + username);
         return this.gameUsers.get(username).getPlayer().getListInsignias();
     }
+
+ */
 
 
 }

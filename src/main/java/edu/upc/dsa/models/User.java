@@ -1,5 +1,7 @@
 package edu.upc.dsa.models;
 
+import edu.upc.dsa.SessionImpl;
+import edu.upc.dsa.util.QueryHelper;
 import edu.upc.dsa.util.RandomUtils;
 
 import java.util.Collections;
@@ -13,7 +15,13 @@ public class User {
     private String fullName;
     private String email;
     private Boolean status;
-    private Player player;
+    private Integer id;
+    private Integer playerId;
+
+
+    public Player getPlayer(){
+        return (Player) SessionImpl.getInstance().get(Player.class, playerId);
+    }
 
     public User() {}
 
@@ -24,13 +32,41 @@ public class User {
         this.fullName=fullName;
         this.email=email;
         this.status=false;
-        this.player= new Player(userName);
+        //this.player= new Player(userName);
     }
 
+    public User(Integer id, Integer playerId, String userName, String password) {
+        this();
+        this.userName=userName;
+        this.password=password;
+        this.id = id;
+        this.fullName=null;
+        this.email=null;
+        this.status=false;
+        this.playerId = playerId;
+        //this.player = null;
+        //this.player= new Player(userName);
+    }
 
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        this.playerId = playerId;
+    }
 
     public String getUserName() {
         return userName;
@@ -72,13 +108,6 @@ public class User {
         this.status = status;
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
 
 
 }

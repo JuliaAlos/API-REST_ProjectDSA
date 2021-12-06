@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    private Integer id;
     private String playerName;
     private Integer maxDistance;
     private String rol;
     private Integer timeOfFlight;
     private Integer bitcoins;
-    private List<Plane> listPlanes = new ArrayList<>();
-    private List<Insignia> listInsignias = new ArrayList<>();
+
+    public List<Plane> getListPlanes(){
+        return null;
+    }
+
+    public List<Insignia> getListInsignias(){
+    return null;
+    }
 
     public Player(){}
     public Player(String playerName){
@@ -22,6 +29,16 @@ public class Player {
         this.bitcoins=0;
     }
 
+    public Player(Integer id, String playerName, Integer maxDistance, String rol, Integer timeOfFlight, Integer bitcoins){
+        this();
+        this.id = id;
+        this.playerName=playerName;
+        this.maxDistance=maxDistance;
+        this.rol = rol;
+        this.timeOfFlight=timeOfFlight;
+        this.bitcoins=bitcoins;
+    }
+
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
@@ -31,6 +48,14 @@ public class Player {
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getMaxDistance() {
@@ -65,23 +90,5 @@ public class Player {
         this.bitcoins = bitcoins;
     }
 
-    public List<Insignia> getListInsignias() {
-        return listInsignias;
-    }
-
-    public List<Plane> getListPlanes() {
-        return listPlanes;
-    }
-
-    /**********************************************************************
-     **********************************************************************/
-
-    public void addPlane(Plane plane){
-        this.listPlanes.add(plane);
-    }
-
-    public void addInsignia (Insignia insignia){
-        this.listInsignias.add(insignia);
-    }
 }
 

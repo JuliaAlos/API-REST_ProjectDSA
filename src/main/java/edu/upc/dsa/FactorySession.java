@@ -4,26 +4,19 @@ package edu.upc.dsa;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class FactorySession {
-    public static Session openSession() {
 
 
-        Connection conn = getConnection();
-
-        Session session = new SessionImpl(conn);
-
-        return session;
-    }
-
-
-
-    private static Connection getConnection() {
+    public static Connection getConnection() {
         Connection conn = null;
+        Properties properties = new Properties();
+        properties.setProperty("user", "game");
+        properties.setProperty("password", "");
         try {
             conn =
-                    DriverManager.getConnection("jdbc:mysql://localhost/test?" +
-                            "user=minty&password=greatsqldb");
+                    DriverManager.getConnection("jdbc:mariadb://localhost:3306/insignia", properties);
 
         } catch (SQLException ex) {
             // handle any errors

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface Session<E> {
+    Boolean isOpen();
     void save(Object entity);
     void close();
     Object get(Class theClass, int ID);
