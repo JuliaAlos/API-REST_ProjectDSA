@@ -1,3 +1,85 @@
-<h1>Hello</h1>
-<p>World</p>
-<img src="espinete.jpg">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome to insignia</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script> 
+        $(document).ready(function(){
+            $(".loader-container").hide();
+            $(".btn").click(function(){
+                
+                var user,psw;
+                $.ajax({
+                    beforeSend: function (){
+                        $(".loader-container").show();
+                        user = $("#userName").val();
+                        psw = $("#password").val();
+                    },
+                    url: 'http://147.83.7.203:8080/dsaApp/user/login',
+                    type: 'POST',
+                    data: {userName:user,password:psw},
+                    dataType: 'json',
+                    success: function (json){
+                    },
+                    error: function (xhr, status,error){
+                        console.log(status)
+                        console.log(error)
+                    },
+                    complete: function (xhr, status){
+                        console.log(status)
+                        $(".loader-container").hide();
+                    },
+                    timeout : 10000
+                })
+            });
+        });
+</script>
+   
+  </head>
+  <body>
+    
+      <div class="login-form">
+        <h1>Login</h1>
+
+        <div class="txtb">
+          
+          <input type="text" id="userName">
+          <span data-placeholder="Username"></span>
+        </div>
+
+        <div class="txtb">
+
+          <input type="password" id="password">
+          <span data-placeholder="Password"></span>
+        </div>
+
+        <input type="submit" class="btn" value="SIGN IN">
+
+        <div class="bottom-text">
+          Don't have account? <a href="register.html" id="register">Sign up</a>
+        </div>
+
+      </div>
+
+      <script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+      </script>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+
+
+
+  </body>
+</html>

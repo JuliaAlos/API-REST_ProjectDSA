@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.eclipse.persistence.sessions.server.ClientSession;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -28,6 +29,19 @@ public class GameService {
         if (manager.getAll().size()==0) {
             GameManagerImpl.getInstance().addUser("Juls2000","12345","Júlia Alós","julia.alos@estudiantat.upc.edu");
             GameManagerImpl.getInstance().addUser("PauEmperador","12345","Pau Baguer","pau.baguer@upc.edu");
+            manager.addUser("Arnau", "12345", "ArnauMir", "arnau.mir@upc.edu");
+            Plane plane0 = new Plane("Cessna", 100, 100, 9.81, 2, 10);
+            Plane plane1 = new Plane("Airbus A320", 500, 70, 10.0, 5, 80);
+            Insignia insignia0 = new Insignia("FirstFlight", "03/12/2021", "Progressive");
+            Insignia insignia1 = new Insignia("FighterMaster", "03/12/2021", "Skills");
+//            manager.addPlane(plane0);
+//            manager.addPlane(plane1);
+//            manager.addInsignia(insignia0);
+//            manager.addInsignia(insignia1);
+//
+//            manager.addPlaneToUser("Arnau", "Cessna");
+//            manager.addPlaneToUser("Arnau", "AirbusA320");
+//            manager.addInsigniaToUser("Arnau", "FirstFlight");
         }
 
     }
@@ -66,6 +80,8 @@ public class GameService {
         return Response.status(200).entity(userTO).build();
     }
 
+    //------------------------------
+
     @DELETE
     @ApiOperation(value = "Delete User", notes = "asdasd")
     @ApiResponses(value = {
@@ -78,6 +94,8 @@ public class GameService {
         else manager.deleteUser(userName);
         return Response.status(200).build();
     }
+
+    //------------------------------
 
     @GET
     @ApiOperation(value = "Logout", notes = "asdasd")
@@ -93,6 +111,8 @@ public class GameService {
         return Response.status(200).build();
     }
 
+    //------------------------------
+
     @GET
     @ApiOperation(value = "Get info from user", notes = "asdasd")
     @ApiResponses(value = {
@@ -107,6 +127,8 @@ public class GameService {
         UserTO userTO = new UserTO(user.getUserName(),user.getFullName(),user.getEmail(),user.getStatus(), user.getPlayer());
         return Response.status(200).entity(userTO).build();
     }
+
+    //------------------------------
 
     @GET
     @ApiOperation(value = "Get all users sort alphabetically by name", notes = "asdasd")
@@ -130,6 +152,8 @@ public class GameService {
         return Response.status(404).entity(entity).build();
     }
 
+    //------------------------------
+
     @GET
     @ApiOperation(value = "Get all active users sort alphabetically by name", notes = "asdasd")
     @ApiResponses(value = {
@@ -151,6 +175,9 @@ public class GameService {
             return Response.status(200).entity(entity).build();
         return Response.status(404).entity(entity).build();
     }
-
-
 }
+
+
+
+
+
