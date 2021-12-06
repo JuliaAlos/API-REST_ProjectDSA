@@ -30,4 +30,13 @@ public class TestDBDriver {
         User u = (User) obj;
         assertThat(u.getPlayer()).usingRecursiveComparison().isEqualTo(new Player(1,"pau player", 0, "ROOKIE", 0,0));
     }
+
+    @Test
+    public void testSave(){
+        User u = new User(1, "Pau2", "79fe6d5e658a2b2302aacd146c7bfb62");
+        Session session = SessionImpl.getInstance();
+        Integer id = session.save(u);
+        System.out.println("Introduced id: " + id.toString());
+
+    }
 }

@@ -48,6 +48,19 @@ public class User {
         //this.player= new Player(userName);
     }
 
+    public User(Integer playerId, String userName, String password) {
+        this();
+        this.userName=userName;
+        this.password=password;
+        this.id = id;
+        this.fullName=null;
+        this.email=null;
+        this.status=false;
+        this.playerId = playerId;
+        //this.player = null;
+        //this.player= new Player(userName);
+    }
+
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/

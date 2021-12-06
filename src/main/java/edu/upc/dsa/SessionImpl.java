@@ -1,6 +1,5 @@
 package edu.upc.dsa;
 
-import edu.upc.dsa.util.ObjectHelper;
 import edu.upc.dsa.util.QueryHelper;
 import org.apache.log4j.Logger;
 
@@ -34,25 +33,33 @@ public class SessionImpl implements Session {
         return open;
     }
 
-    public void save(Object entity) {
+    public Integer save(Object entity) {
 
         String insertQuery = QueryHelper.createQueryINSERT(entity);
 
         PreparedStatement pstm = null;
 
         try {
-            pstm = conn.prepareStatement(insertQuery);
-            pstm.setObject(1, 0);
-            int i = 2;
-
-            for (String field: ObjectHelper.getFields(entity)) {
-                pstm.setObject(i++, ObjectHelper.getter(entity, field));
-            }
+            pstm = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
+          //  pstm.setObject(1, 0);
+//            int i = 1;
+//
+//            for (String field: ObjectHelper.getFields(entity)) {
+//                pstm.setObject(i++, ObjectHelper.getter(entity, field));
+//            }
 
             pstm.executeQuery();
+            //get Assigned id
+            ResultSet res = pstm.getGeneratedKeys();
+
+            res.next();
+
+            return (int) res.getLong(1);
+
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
 
     }

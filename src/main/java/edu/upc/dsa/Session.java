@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface Session<E> {
     Boolean isOpen();
-    void save(Object entity);
+    Integer save(Object entity);
     void close();
     Object get(Class theClass, int ID);
     void update(Object object);

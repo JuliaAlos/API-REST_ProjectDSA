@@ -10,15 +10,31 @@ public class QueryHelper {
 
         String [] fields = ObjectHelper.getFields(entity);
 
-        sb.append("ID");
-        for (String field: fields) {
-            sb.append(", ").append(field);
+        sb.append(fields[0]);
+        for (int i =1; i<fields.length; i++) {
+            sb.append(", ").append(fields[i]);
         }
 
-        sb.append(") VALUES (?");
+        sb.append(") VALUES (");
+        try {
+            Object value = ObjectHelper.getter(entity, fields[0]);
+            if (entity.getClass().getDeclaredField(fields[0]).getType().equals(String.class) && value != null) {
+                sb.append("'").append(value).append("'");
+            } else {
+                sb.append(ObjectHelper.getter(entity, fields[0]));
+            }
 
-        for (String field: fields) {
-            sb.append(", ?");
+            for (int i = 1; i < fields.length; i++) {
+                sb.append(", ");
+                Object v = ObjectHelper.getter(entity, fields[i]);
+                if (entity.getClass().getDeclaredField(fields[i]).getType().equals(String.class) && v != null) {
+                    sb.append("'").append(v).append("'");
+                } else {
+                    sb.append(ObjectHelper.getter(entity, fields[i]));
+                }
+            }
+        }catch (NoSuchFieldException e){
+            e.printStackTrace();
         }
 
         sb.append(")");

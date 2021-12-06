@@ -19,7 +19,7 @@ CREATE TABLE Player (
 CREATE TABLE User (
                       Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
                       PlayerId INT NOT NULL,
-                      UserName varchar(255) NOT NULL unique,
+                      UserName varchar(255) NOT NULL,
                       Password varchar(255) NOT NULL,
                       FullName varchar(255),
                       Email varchar(255),
