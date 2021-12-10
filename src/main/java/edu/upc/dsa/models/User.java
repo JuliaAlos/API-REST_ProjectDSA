@@ -15,8 +15,9 @@ public class User {
     private String fullName;
     private String email;
     private Boolean status;
-    private Integer id;
-    private Integer playerId;
+    private String id;
+    //one to one
+    private String playerId;
 
 
     public Player getPlayer(){
@@ -25,21 +26,22 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String password, String fullName, String email) {
-        this();
-        this.userName=userName;
-        this.password=password;
-        this.fullName=fullName;
-        this.email=email;
-        this.status=false;
-        //this.player= new Player(userName);
+
+    public User(String id, String playerId, String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+        this.id = id;
+        this.playerId = playerId;
+        this.status = false;
+        this.fullName=null;
+        this.email=null;
     }
 
-    public User(Integer id, Integer playerId, String userName, String password) {
+    public User(String playerId, String userName, String password) {
         this();
         this.userName=userName;
         this.password=password;
-        this.id = id;
+        //this.id = id;
         this.fullName=null;
         this.email=null;
         this.status=false;
@@ -48,38 +50,28 @@ public class User {
         //this.player= new Player(userName);
     }
 
-    public User(Integer playerId, String userName, String password) {
-        this();
-        this.userName=userName;
-        this.password=password;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
-        this.fullName=null;
-        this.email=null;
-        this.status=false;
+    }
+
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
         this.playerId = playerId;
-        //this.player = null;
-        //this.player= new Player(userName);
     }
 
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public Integer getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(Integer playerId) {
-        this.playerId = playerId;
-    }
 
     public String getUserName() {
         return userName;

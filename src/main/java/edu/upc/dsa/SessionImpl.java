@@ -1,10 +1,10 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.util.ObjectHelper;
 import edu.upc.dsa.util.QueryHelper;
 import org.apache.log4j.Logger;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+
 import java.sql.*;
 import java.util.*;
 
@@ -33,28 +33,32 @@ public class SessionImpl implements Session {
         return open;
     }
 
-    public Integer save(Object entity) {
+    public String save(Object entity) {
 
         String insertQuery = QueryHelper.createQueryINSERT(entity);
 
         PreparedStatement pstm = null;
 
+
         try {
-            pstm = conn.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
-          //  pstm.setObject(1, 0);
-//            int i = 1;
-//
-//            for (String field: ObjectHelper.getFields(entity)) {
-//                pstm.setObject(i++, ObjectHelper.getter(entity, field));
-//            }
+            pstm = conn.prepareStatement(insertQuery, new String[]{"id"});
+            int i = 1;
+            String id = UUID.randomUUID().toString();
+            for (String field: ObjectHelper.getFields(entity)) {
+                if(!field.equals("id")) {
+                    pstm.setObject(i++, ObjectHelper.getter(entity, field));
+                }else {
+                    pstm.setObject(i++, id);
+                }
+            }
 
             pstm.executeQuery();
             //get Assigned id
-            ResultSet res = pstm.getGeneratedKeys();
+//            ResultSet res = pstm.getGeneratedKeys();
+//
+//            res.next();
 
-            res.next();
-
-            return (int) res.getLong(1);
+            return id;//res.getString(1);
 
 
         } catch (SQLException e) {
@@ -68,7 +72,7 @@ public class SessionImpl implements Session {
 
     }
 
-    public Object get(Class theClass, int id) {
+    public Object get(Class theClass, String id) {
         String query = QueryHelper.createQuerySELECT(theClass, id);
         ResultSet rs;
         try {
@@ -82,18 +86,7 @@ public class SessionImpl implements Session {
             while (rs.next()){
                 for (int i=1; i<=numberOfColumns; i++){
                     String columnName = metadata.getColumnName(i);
-
-                    List<Method> methods = new ArrayList<>(Arrays.asList(theClass.getDeclaredMethods()));
-                    try {
-                        Method m = methods.stream().filter((Method method) -> method.getName().contains("set" + columnName)).findFirst().get();
-                        m.invoke(o,  rs.getObject(i));
-                    }catch (NoSuchElementException e){
-                        logger.warn("No setter found for: " + columnName + " in " + theClass.getName());
-                    }
-
-
-                    System.out.println(columnName);
-
+                    ObjectHelper.setter(o, columnName, rs.getObject(i));
                 }
             }
             return o;
@@ -103,8 +96,6 @@ public class SessionImpl implements Session {
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
 
@@ -128,6 +119,7 @@ public class SessionImpl implements Session {
         return null;
     }
 
+    //query personalitzades - fer login aqui
     public List<Object> query(String query, Class theClass, HashMap params) {
         return null;
     }

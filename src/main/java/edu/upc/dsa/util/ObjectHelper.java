@@ -1,11 +1,20 @@
 package edu.upc.dsa.util;
 
 
+import edu.upc.dsa.SessionImpl;
+import org.apache.log4j.Logger;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ObjectHelper {
+
+    final static Logger logger = Logger.getLogger(ObjectHelper.class);
     public static String[] getFields(Object entity) {
 
         Class theClass = entity.getClass();
@@ -23,7 +32,13 @@ public class ObjectHelper {
 
 
     public static void setter(Object object, String property, Object value) {
-        // Method // invoke
+        List<Method> methods = new ArrayList<>(Arrays.asList(object.getClass().getDeclaredMethods()));
+        try {
+            Method m = methods.stream().filter((Method method) -> method.getName().contains("set" + property)).findFirst().get();
+            m.invoke(object,  value);
+        }catch (NoSuchElementException | IllegalAccessException | InvocationTargetException e){
+            logger.warn("No setter found for: " + property + " in " + object.getClass().getName());
+        }
 
 
     }

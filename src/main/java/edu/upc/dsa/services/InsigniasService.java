@@ -26,14 +26,14 @@ public class InsigniasService {
     public InsigniasService() {
         this.manager = GameManagerImpl.getInstance();
 
-        if (manager.getAllInsignias().size() == 0) {
-            GameManagerImpl.getInstance().addUser("Juls2000", "12345", "Júlia Alós", "julia.alos@estudiantat.upc.edu");
-            GameManagerImpl.getInstance().addUser("PauEmperador", "12345", "Pau Baguer", "pau.baguer@upc.edu");
-            manager.addUser("Arnau", "12345", "ArnauMir", "arnau.mir@upc.edu");
-            Plane plane0 = new Plane("Cessna", 100, 100, 9.81, 2, 10);
-            Plane plane1 = new Plane("AirbusA320", 500, 70, 10.0, 5, 80);
-            Insignia insignia0 = new Insignia("FirstFlight", "03/12/2021", "Progressive");
-            Insignia insignia1 = new Insignia("FighterMaster", "03/12/2021", "Skills");
+//        if (manager.getAllInsignias().size() == 0) {
+//            GameManagerImpl.getInstance().addUser("Juls2000", "12345", "Júlia Alós", "julia.alos@estudiantat.upc.edu");
+//            GameManagerImpl.getInstance().addUser("PauEmperador", "12345", "Pau Baguer", "pau.baguer@upc.edu");
+//            manager.addUser("Arnau", "12345", "ArnauMir", "arnau.mir@upc.edu");
+//            Plane plane0 = new Plane("Cessna", 100, 100, 9.81, 2, 10);
+//            Plane plane1 = new Plane("AirbusA320", 500, 70, 10.0, 5, 80);
+//            Insignia insignia0 = new Insignia("FirstFlight", "03/12/2021", "Progressive");
+//            Insignia insignia1 = new Insignia("FighterMaster", "03/12/2021", "Skills");
 
 
 //            manager.addPlane(plane0);
@@ -44,7 +44,7 @@ public class InsigniasService {
 //            manager.addPlaneToUser("Arnau", "Cessna");
 //            manager.addPlaneToUser("Arnau", "Airbus A320");
 //            manager.addInsigniaToUser("Arnau", "First Flight");
-        }
+//        }
     }
 
     @POST

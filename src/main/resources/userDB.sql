@@ -5,7 +5,7 @@ USE insignia;
 
 
 CREATE TABLE Player (
-                        Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                        Id varchar(255) DEFAULT UUID() PRIMARY KEY,
     #    UserId INT NOT NULL,
                         PlayerName varchar(255) NOT NULL,
                         MaxDistance integer DEFAULT 0,
@@ -17,8 +17,8 @@ CREATE TABLE Player (
 );
 
 CREATE TABLE User (
-                      Id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                      PlayerId INT NOT NULL,
+                      Id varchar(255) DEFAULT UUID() PRIMARY KEY,
+                      PlayerId varchar(255) NOT NULL,
                       UserName varchar(255) NOT NULL,
                       Password varchar(255) NOT NULL,
                       FullName varchar(255),

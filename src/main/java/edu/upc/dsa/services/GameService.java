@@ -58,7 +58,7 @@ public class GameService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(RegisterUserTO user) {
         if (manager.existUser(user.getUserName()))  return Response.status(409).build();
-        User newUser = new User(user.getUserName(), user.getPassword(), user.getFullName(), user.getEmail());
+        User newUser = null; //new User(user.getUserName(), user.getPassword(), user.getFullName(), user.getEmail());
         this.manager.addUser(newUser);
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
         return Response.status(201).entity(userTO).build();

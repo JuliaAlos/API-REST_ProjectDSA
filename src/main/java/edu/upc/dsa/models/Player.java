@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    private Integer id;
+    private String id;
     private String playerName;
     private Integer maxDistance;
     private String rol;
@@ -29,7 +29,7 @@ public class Player {
         this.bitcoins=0;
     }
 
-    public Player(Integer id, String playerName, Integer maxDistance, String rol, Integer timeOfFlight, Integer bitcoins){
+    public Player(String id, String playerName, Integer maxDistance, String rol, Integer timeOfFlight, Integer bitcoins){
         this();
         this.id = id;
         this.playerName=playerName;
@@ -50,11 +50,11 @@ public class Player {
         this.playerName = playerName;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
