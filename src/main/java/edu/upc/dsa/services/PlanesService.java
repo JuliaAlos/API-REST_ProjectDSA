@@ -28,7 +28,7 @@ public class PlanesService {
     public PlanesService() {
         this.manager = GameManagerImpl.getInstance();
 
-        if (manager.getAll().size() == 0) {
+        if (manager.getAllPlanes().size() == 0) {
             GameManagerImpl.getInstance().addUser("Juls2000", "12345", "Júlia Alós", "julia.alos@estudiantat.upc.edu");
             GameManagerImpl.getInstance().addUser("PauEmperador", "12345", "Pau Baguer", "pau.baguer@upc.edu");
             manager.addUser("Arnau", "12345", "ArnauMir", "arnau.mir@upc.edu");
