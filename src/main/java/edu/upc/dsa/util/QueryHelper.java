@@ -49,17 +49,22 @@ public class QueryHelper {
 
    //     sb.append("ID");
         sb.append(fields[0]);
-
+        Integer passwordPos = null;
         for (int i = 1; i< fields.length ;i++){
-         //   if(!fields[i].equals("id"))
-                sb.append(", ").append(fields[i]);
+            if(fields[i].equals("password"))
+                passwordPos = i;
+            sb.append(", ").append(fields[i]);
 
         }
 
         sb.append(") VALUES (?");
 
         for (int i = 1; i< fields.length ;i++){
-            sb.append(", ?");
+            if(passwordPos!=null && passwordPos == i){
+                sb.append(", MD5(?)");
+            }else {
+                sb.append(", ?");
+            }
         }
 
         sb.append(")");
@@ -71,6 +76,14 @@ public class QueryHelper {
         StringBuffer sb = new StringBuffer();
         sb.append("SELECT * FROM ").append(theClass.getSimpleName());
         sb.append(" WHERE id = '").append(id).append("'");
+
+        return sb.toString();
+    }
+
+    public static String createQuerySELECTbyUsername(Class theClass, String username) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("SELECT * FROM ").append(theClass.getSimpleName());
+        sb.append(" WHERE userName = '").append(username).append("'");
 
         return sb.toString();
     }

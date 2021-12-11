@@ -19,7 +19,13 @@ public class RegisterUserTO {
     }
 
     public User toUser(){
-        return new User()
+        User u = new User();
+        u.setUserName(this.userName);
+        u.setPassword(this.password);
+        u.setFullName(this.fullName);
+        u.setEmail(this.email);
+        u.setStatus(false);
+        return u;
     }
 
 

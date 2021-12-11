@@ -1,5 +1,6 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.models.Player;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
 
@@ -10,14 +11,21 @@ import java.util.List;
 public class GameManagerDAOImpl implements GameManager{
 
     private static GameManagerDAOImpl manager;
-    private SessionImpl session = SessionImpl.getInstance();
-   // private HashMap<String, User> gameUsers;
+    private SessionImpl session;
+    private HashMap<String, User> gameUsers;
     final static Logger logger = Logger.getLogger(GameManagerDAOImpl.class);
 
 
 
     private GameManagerDAOImpl(){
         //this.gameUsers = new HashMap<>();
+        session  = SessionImpl.getInstance();
+
+    }
+
+    @Override
+    public User addUser(String userName, String password, String fullName, String email) {
+        return null;
     }
 
     public static GameManagerDAOImpl getInstance(){
@@ -33,22 +41,15 @@ public class GameManagerDAOImpl implements GameManager{
         logger.info("Instance GameManagerDAOImpl deleted");
     }
 
-    @Override
-    public User addUser(String userName, String password, String fullName, String email) {
-        User u = new User(userName,password,fullName,email);
-        session.save(u);
-        return u;
-    }
+
 
     @Override
     public User addUser(User user) {
         logger.info("New user " +user.getUserName()+" -> "+ user);
-        User u = (User) session.get(User.class, user.getId());
-        if(u == null){
-            logger.info("Username is already used");
-            return null;
-        }
-        session.save(u);
+        Player player = new Player(user.getUserName()); // by default player name = username
+        String playerId = session.save(player);
+        user.setPlayerId(playerId);
+        session.save(user);
         logger.info("New user added");
         return user;
     }
@@ -116,9 +117,10 @@ public class GameManagerDAOImpl implements GameManager{
 
     }
 
+    //implemented and tested
     @Override
     public Boolean existUser(String userName){
-        if(gameUsers.containsKey(userName)){
+        if(session.getByUsername(User.class, userName) != null){
             logger.info(userName+" found");
             return true;
         }

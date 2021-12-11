@@ -19,7 +19,7 @@ CREATE TABLE Player (
 CREATE TABLE User (
                       Id varchar(255) DEFAULT UUID() PRIMARY KEY,
                       PlayerId varchar(255) NOT NULL,
-                      UserName varchar(255) NOT NULL,
+                      UserName varchar(255) UNIQUE NOT NULL,
                       Password varchar(255) NOT NULL,
                       FullName varchar(255),
                       Email varchar(255),

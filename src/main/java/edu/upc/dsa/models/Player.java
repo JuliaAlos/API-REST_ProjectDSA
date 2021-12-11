@@ -24,7 +24,7 @@ public class Player {
         this();
         this.playerName=playerName;
         this.maxDistance=0;
-        this.rol = "Beginner";
+        this.rol = "ROOKIE";
         this.timeOfFlight=0;
         this.bitcoins=0;
     }
@@ -38,6 +38,8 @@ public class Player {
         this.timeOfFlight=timeOfFlight;
         this.bitcoins=bitcoins;
     }
+
+
 
     /**********************************************************************
      **********************    Getters & Setters   ************************

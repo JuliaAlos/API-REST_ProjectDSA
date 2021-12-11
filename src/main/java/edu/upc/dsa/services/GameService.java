@@ -1,5 +1,6 @@
 package edu.upc.dsa.services;
 
+import edu.upc.dsa.GameManagerDAOImpl;
 import edu.upc.dsa.models.*;
 import edu.upc.dsa.GameManager;
 import edu.upc.dsa.GameManagerImpl;
@@ -24,7 +25,7 @@ public class GameService {
     private GameManager manager;
 
     public GameService() {
-        this.manager = GameManagerImpl.getInstance();
+        this.manager = GameManagerDAOImpl.getInstance();
 //
 //        if (manager.getAll().size()==0) {
 //            GameManagerImpl.getInstance().addUser("Juls2000","12345","Júlia Alós","julia.alos@estudiantat.upc.edu");
@@ -58,7 +59,7 @@ public class GameService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(RegisterUserTO user) {
         if (manager.existUser(user.getUserName()))  return Response.status(409).build();
-        User newUser = null; //new User(user.getUserName(), user.getPassword(), user.getFullName(), user.getEmail());
+        User newUser = user.toUser();
         this.manager.addUser(newUser);
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
         return Response.status(201).entity(userTO).build();

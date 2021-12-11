@@ -44,7 +44,7 @@ public class SessionImpl implements Session {
             pstm = conn.prepareStatement(insertQuery);
 
             String id = UUID.randomUUID().toString();
-            ObjectHelper.setter(entity, "id", id);
+            ObjectHelper.setter(entity, "Id", id);
 
             int i = 1;
             for (String field: ObjectHelper.getFields(entity)) {
@@ -83,6 +83,42 @@ public class SessionImpl implements Session {
                     ObjectHelper.setter(o, columnName, rs.getObject(i));
                 }
             }
+            return o;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+    public Object getByUsername(Class theClass, String username) {
+        String query = QueryHelper.createQuerySELECTbyUsername(theClass, username);
+        ResultSet rs;
+        try {
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(query);
+            ResultSetMetaData metadata = rs.getMetaData();
+            int numberOfColumns = metadata.getColumnCount();
+
+
+            Object o = theClass.newInstance();
+
+            while (rs.next()){
+                for (int i=1; i<=numberOfColumns; i++){
+                    String columnName = metadata.getColumnName(i);
+                    ObjectHelper.setter(o, columnName, rs.getObject(i));
+                }
+            }
+            if(ObjectHelper.getter(o,"id") == null){
+                return null;
+            }
+
             return o;
 
         } catch (SQLException e) {
