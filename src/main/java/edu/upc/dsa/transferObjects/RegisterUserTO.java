@@ -1,5 +1,7 @@
 package edu.upc.dsa.transferObjects;
 
+import edu.upc.dsa.models.User;
+
 public class RegisterUserTO {
     private String userName;
     private String password;
@@ -14,6 +16,10 @@ public class RegisterUserTO {
         this.password=password;
         this.fullName=fullName;
         this.email=email;
+    }
+
+    public User toUser(){
+        return new User()
     }
 
 

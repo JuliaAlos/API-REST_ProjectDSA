@@ -10,18 +10,19 @@ import java.util.List;
 public class GameManagerDAOImpl implements GameManager{
 
     private static GameManagerDAOImpl manager;
-    private HashMap<String, User> gameUsers;
+    private SessionImpl session = SessionImpl.getInstance();
+   // private HashMap<String, User> gameUsers;
     final static Logger logger = Logger.getLogger(GameManagerDAOImpl.class);
 
 
 
     private GameManagerDAOImpl(){
-        this.gameUsers = new HashMap<>();
+        //this.gameUsers = new HashMap<>();
     }
 
     public static GameManagerDAOImpl getInstance(){
         if(manager==null){
-            logger.info("New instance edu.upc.dsa.GameManagerImpl");
+            logger.info("New instance edu.upc.dsa.GameManagerDAOImpl");
             manager = new GameManagerDAOImpl();
         }
         return manager;
@@ -29,27 +30,25 @@ public class GameManagerDAOImpl implements GameManager{
 
     public static void delete(){
         manager = null;
-        logger.info("Instance GameManagerImpl deleted");
-    }
-
-    public void clear(){
-        gameUsers.clear();
-        logger.info("Instance GameManagerImpl clear");
+        logger.info("Instance GameManagerDAOImpl deleted");
     }
 
     @Override
     public User addUser(String userName, String password, String fullName, String email) {
-        return null;// this.addUser(new User(userName,password,fullName,email));
+        User u = new User(userName,password,fullName,email);
+        session.save(u);
+        return u;
     }
 
     @Override
     public User addUser(User user) {
         logger.info("New user " +user.getUserName()+" -> "+ user);
-        if(gameUsers.containsKey(user.getUserName())){
+        User u = (User) session.get(User.class, user.getId());
+        if(u == null){
             logger.info("Username is already used");
             return null;
         }
-        this.gameUsers.put(user.getUserName(), user);
+        session.save(u);
         logger.info("New user added");
         return user;
     }

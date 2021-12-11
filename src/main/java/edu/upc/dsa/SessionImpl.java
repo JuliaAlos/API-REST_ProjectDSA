@@ -41,25 +41,19 @@ public class SessionImpl implements Session {
 
 
         try {
-            pstm = conn.prepareStatement(insertQuery, new String[]{"id"});
-            int i = 1;
+            pstm = conn.prepareStatement(insertQuery);
+
             String id = UUID.randomUUID().toString();
+            ObjectHelper.setter(entity, "id", id);
+
+            int i = 1;
             for (String field: ObjectHelper.getFields(entity)) {
-                if(!field.equals("id")) {
-                    pstm.setObject(i++, ObjectHelper.getter(entity, field));
-                }else {
-                    pstm.setObject(i++, id);
-                }
+                pstm.setObject(i++, ObjectHelper.getter(entity, field));
             }
 
             pstm.executeQuery();
-            //get Assigned id
-//            ResultSet res = pstm.getGeneratedKeys();
-//
-//            res.next();
 
-            return id;//res.getString(1);
-
+            return id;
 
         } catch (SQLException e) {
             e.printStackTrace();
