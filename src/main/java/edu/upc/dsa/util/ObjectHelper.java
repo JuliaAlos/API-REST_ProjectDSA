@@ -30,6 +30,24 @@ public class ObjectHelper {
 
     }
 
+    public static String[] getAllFieldsButId(Object entity) {
+
+        Class theClass = entity.getClass();
+
+        Field[] fields = theClass.getDeclaredFields();
+
+        String[] sFields = new String[fields.length-1];
+        int i=0;
+
+        for (Field f: fields) {
+            if(!f.getName().equals("id"))
+                sFields[i++]=f.getName();
+        }
+
+        return sFields;
+
+    }
+
 
     public static void setter(Object object, String property, Object value) {
         List<Method> methods = new ArrayList<>(Arrays.asList(object.getClass().getDeclaredMethods()));

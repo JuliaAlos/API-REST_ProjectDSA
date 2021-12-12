@@ -41,16 +41,15 @@ public class User {
         this();
         this.userName=userName;
         this.password=password;
-        //this.id = id;
         this.fullName=null;
         this.email=null;
         this.status=false;
         this.playerId = playerId;
-        //this.player = null;
-        //this.player= new Player(userName);
     }
 
-
+    /**********************************************************************
+     **********************    Getters & Setters   ************************
+     **********************************************************************/
 
     public String getId() {
         return id;
@@ -67,10 +66,6 @@ public class User {
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
-
-    /**********************************************************************
-     **********************    Getters & Setters   ************************
-     **********************************************************************/
 
 
 

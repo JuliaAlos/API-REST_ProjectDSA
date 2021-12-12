@@ -1,6 +1,11 @@
 package edu.upc.dsa.models;
 
+import edu.upc.dsa.SessionImpl;
+
+import javax.ws.rs.core.Link;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
@@ -10,14 +15,6 @@ public class Player {
     private String rol;
     private Integer timeOfFlight;
     private Integer bitcoins;
-
-    public List<Plane> getListPlanes(){
-        return null;
-    }
-
-    public List<Insignia> getListInsignias(){
-    return null;
-    }
 
     public Player(){}
     public Player(String playerName){
@@ -39,11 +36,25 @@ public class Player {
         this.bitcoins=bitcoins;
     }
 
+    public List<Insignia> getInsigniaList(){
+        List<Insignia> l = new LinkedList<>();
+        SessionImpl.getInstance().findAll(Insignia.class, new HashMap<String, Object>(){{put("playerId",id);}}).forEach(el -> l.add((Insignia) el));
+        return l;
+    }
+
+    public List<Plane> getPlaneList(){
+        List<Plane> l = new LinkedList<>();
+        SessionImpl.getInstance().findAll(Plane.class, new HashMap<String, Object>(){{put("playerId",id);}}).forEach(el -> l.add((Plane) el));
+        return l;
+    }
+
 
 
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
+
+
     public String getPlayerName() {
         return playerName;
     }

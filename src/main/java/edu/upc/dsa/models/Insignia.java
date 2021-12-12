@@ -1,41 +1,54 @@
 package edu.upc.dsa.models;
 
 public class Insignia {
-    private String name;
+    private String id;
     private String date;
-    private String type;
+    private String insigniaModelName;
+    private String playerId;
 
-    public Insignia(){}
-    public Insignia(String name, String date, String type) {
-        this.name = name;
+    public Insignia() {
+    }
+
+    public Insignia(String date, String insigniaModelName, String playerId) {
+        this();
         this.date = date;
-        this.type = type;
+        this.insigniaModelName = insigniaModelName;
+        this.playerId = playerId;
     }
 
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
-    public void setName(String name) {
-        this.name = name;
+
+    public String getId() {
+        return id;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getName() {
-        return name;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getDate() {
         return date;
     }
 
-    public String getType() {
-        return type;
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getInsigniaModelName() {
+        return insigniaModelName;
+    }
+
+    public void setInsigniaModelName(String insigniaModelName) {
+        this.insigniaModelName = insigniaModelName;
+    }
+
+    public String getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
     }
 }

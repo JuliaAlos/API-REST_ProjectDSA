@@ -6,7 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Random;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class GameManagerDAOTest {
     @Test
@@ -29,7 +32,40 @@ public class GameManagerDAOTest {
         RegisterUserTO registerUserTO = new RegisterUserTO("P"+ rand.toString(), "Pau", "P fullname", "pau@pau.pau");
         User u = gameManagerDAO.addUser(registerUserTO.toUser());
 
+    }
 
+    @Test
+    public void testLogin(){
+        GameManagerDAOImpl gameManagerDAO = GameManagerDAOImpl.getInstance();
+
+        gameManagerDAO.loginUser("Pau", "Pau");
+        User u = gameManagerDAO.getUser("Pau");
+        Assert.assertTrue(u.getStatus());
+    }
+
+    @Test
+    public void testLogout(){
+        GameManagerDAOImpl gameManagerDAO = GameManagerDAOImpl.getInstance();
+
+        gameManagerDAO.logoutUser("Pau");
+        User u = gameManagerDAO.getUser("Pau");
+        Assert.assertFalse(u.getStatus());
+
+    }
+
+    @Test
+    public void testDeleteUser(){
+        GameManagerDAOImpl gameManagerDAO = GameManagerDAOImpl.getInstance();
+        RegisterUserTO registerUserTO = new RegisterUserTO("toBeRemoved", "Pau", "P fullname", "pau@pau.pau");
+        User u = gameManagerDAO.addUser(registerUserTO.toUser());
+        gameManagerDAO.deleteUser("toBeRemoved");
+
+    }
+
+    @Test
+    public void testGetAll(){
+        GameManagerDAOImpl gameManagerDAO = GameManagerDAOImpl.getInstance();
+        List<User> l =gameManagerDAO.getAll();
 
     }
 }

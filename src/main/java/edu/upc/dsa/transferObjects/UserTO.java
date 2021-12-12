@@ -1,6 +1,7 @@
 package edu.upc.dsa.transferObjects;
 
 import edu.upc.dsa.models.Player;
+import edu.upc.dsa.models.User;
 
 public class UserTO {
     private String userName;
@@ -11,6 +12,15 @@ public class UserTO {
 
     public UserTO() {}
 
+    public UserTO(User user) {
+        this();
+        this.userName = user.getUserName();
+        this.fullName = user.getFullName();
+        this.email = user.getEmail();
+        this.status = user.getStatus();
+        this.player = user.getPlayer();
+    }
+
     public UserTO(String userName, String fullName, String email,Boolean status,Player player) {
         this();
         this.userName=userName;
@@ -19,6 +29,8 @@ public class UserTO {
         this.status=status;
         this.player=player;
     }
+
+
 
 
     /**********************************************************************

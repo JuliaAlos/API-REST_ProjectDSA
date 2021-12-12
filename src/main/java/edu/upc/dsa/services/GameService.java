@@ -26,24 +26,6 @@ public class GameService {
 
     public GameService() {
         this.manager = GameManagerDAOImpl.getInstance();
-//
-//        if (manager.getAll().size()==0) {
-//            GameManagerImpl.getInstance().addUser("Juls2000","12345","Júlia Alós","julia.alos@estudiantat.upc.edu");
-//            GameManagerImpl.getInstance().addUser("PauEmperador","12345","Pau Baguer","pau.baguer@upc.edu");
-//            manager.addUser("Arnau", "12345", "ArnauMir", "arnau.mir@upc.edu");
-//            Plane plane0 = new Plane("Cessna", 100, 100, 9.81, 2, 10);
-//            Plane plane1 = new Plane("Airbus A320", 500, 70, 10.0, 5, 80);
-//            Insignia insignia0 = new Insignia("FirstFlight", "03/12/2021", "Progressive");
-//            Insignia insignia1 = new Insignia("FighterMaster", "03/12/2021", "Skills");
-//            manager.addPlane(plane0);
-//            manager.addPlane(plane1);
-//            manager.addInsignia(insignia0);
-//            manager.addInsignia(insignia1);
-//
-//            manager.addPlaneToUser("Arnau", "Cessna");
-//            manager.addPlaneToUser("Arnau", "AirbusA320");
-//            manager.addInsigniaToUser("Arnau", "FirstFlight");
-//        }
 
     }
 
@@ -64,6 +46,7 @@ public class GameService {
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
         return Response.status(201).entity(userTO).build();
     }
+
 
     @POST
     @ApiOperation(value = "Login user", notes = "asdasd")
@@ -89,15 +72,15 @@ public class GameService {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Not found (user not found)")
     })
+
     @Path("/{userName}")
-    public Response deleteTrack(@PathParam("userName") String userName) {
+    public Response deleteUser(@PathParam("userName") String userName) {
         if (!manager.existUser(userName)) return Response.status(404).build();
         else manager.deleteUser(userName);
         return Response.status(200).build();
     }
 
     //------------------------------
-
     @GET
     @ApiOperation(value = "Logout", notes = "asdasd")
     @ApiResponses(value = {
@@ -125,7 +108,7 @@ public class GameService {
     public Response getUser(@PathParam("userName") String userName) {
         User user = manager.getUser(userName);
         if (user == null) return Response.status(404).build();
-        UserTO userTO = new UserTO(user.getUserName(),user.getFullName(),user.getEmail(),user.getStatus(), user.getPlayer());
+        UserTO userTO = new UserTO(user);
         return Response.status(200).entity(userTO).build();
     }
 
@@ -144,7 +127,7 @@ public class GameService {
         List<User> userList = this.manager.getAll();
         List<UserTO> userTOList = new LinkedList<UserTO>();
         for(User user:userList){
-            userTOList.add(new UserTO(user.getUserName(),user.getFullName(),user.getEmail(),user.getStatus(), user.getPlayer()));
+            userTOList.add(new UserTO(user));
         }
         GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
 
@@ -168,7 +151,7 @@ public class GameService {
         List<User> userList = this.manager.getAllActive();
         List<UserTO> userTOList = new LinkedList<UserTO>();
         for(User user:userList){
-            userTOList.add(new UserTO(user.getUserName(),user.getFullName(),user.getEmail(),user.getStatus(), user.getPlayer()));
+            userTOList.add(new UserTO(user));
         }
         GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
 

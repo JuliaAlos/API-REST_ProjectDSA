@@ -11,6 +11,6 @@ public interface Session<E> {
     void update(Object object);
     void delete(Object object);
     List<Object> findAll(Class theClass);
-    List<Object> findAll(Class theClass, HashMap params);
+    List<Object> findAll(Class theClass, HashMap<String, Object> params);
     List<Object> query(String query, Class theClass, HashMap params);
 }

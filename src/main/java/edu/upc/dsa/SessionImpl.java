@@ -83,6 +83,11 @@ public class SessionImpl implements Session {
                     ObjectHelper.setter(o, columnName, rs.getObject(i));
                 }
             }
+
+            if(ObjectHelper.getter(o,"id") == null){
+                return null;
+            }
+
             return o;
 
         } catch (SQLException e) {
@@ -134,23 +139,128 @@ public class SessionImpl implements Session {
     }
 
     public void update(Object object) {
+        String query = QueryHelper.createQueryUPDATE(object);
+
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(query);
+
+            int i = 1;
+            for (String field : ObjectHelper.getAllFieldsButId(object)) {
+                pstm.setObject(i++, ObjectHelper.getter(object, field));
+            }
+            pstm.setObject(i++, ObjectHelper.getter(object, "id"));
+
+            pstm.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     public void delete(Object object) {
+        String query = QueryHelper.createQueryDELETE(object);
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(query);
 
+            pstm.setObject(1, ObjectHelper.getter(object, "id"));
+
+            pstm.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public List<Object> findAll(Class theClass) {
+        String query = QueryHelper.createQuerySELECTAll(theClass);
+        PreparedStatement pstm = null;
+
+        ResultSet rs;
+        List<Object> l = new LinkedList<>();
+        try {
+            pstm = conn.prepareStatement(query);
+            pstm.executeQuery();
+            rs = pstm.getResultSet();
+
+            ResultSetMetaData metadata = rs.getMetaData();
+            int numberOfColumns = metadata.getColumnCount();
+
+            while (rs.next()){
+                Object o = theClass.newInstance();
+                for (int j=1; j<=numberOfColumns; j++){
+                    String columnName = metadata.getColumnName(j);
+                    ObjectHelper.setter(o, columnName, rs.getObject(j));
+                }
+                l.add(o);
+
+            }
+            return l;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
         return null;
     }
 
+    @Override
     public List<Object> findAll(Class theClass, HashMap params) {
+        String query = QueryHelper.createQuerySELECTwithParameters(theClass, params);
+        PreparedStatement pstm = null;
+
+        try {
+            pstm = conn.prepareStatement(query);
+
+
+            int i = 1;
+            for(Object v : params.values()){
+                pstm.setObject(i++, v);
+            }
+
+
+            pstm.executeQuery();
+
+            ResultSet rs = pstm.getResultSet();
+
+            ResultSetMetaData metadata = rs.getMetaData();
+            int numberOfColumns = metadata.getColumnCount();
+            List<Object> l = new LinkedList<>();
+
+
+            while (rs.next()){
+                Object o = theClass.newInstance();
+                for (int j=1; j<=numberOfColumns; j++){
+                    String columnName = metadata.getColumnName(j);
+                    ObjectHelper.setter(o, columnName, rs.getObject(j));
+                }
+                l.add(o);
+            }
+
+
+            return l;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
         return null;
     }
 
     //query personalitzades - fer login aqui
     public List<Object> query(String query, Class theClass, HashMap params) {
+
+
+
         return null;
     }
 }
