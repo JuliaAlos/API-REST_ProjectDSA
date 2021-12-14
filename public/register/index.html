@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+    <script> 
+        $(document).ready(function(){
+            $(".loader-container").hide();
+            $(".btn").click(function(){
+
+              let pass = $("#password").val()
+              let confPass = $("#confPassword").val()
+              if(pass === confPass){
+                $(".loader-container").show();
+
+                let registerObj = {
+                  userName: $("#userName").val(),
+                  password: $("#password").val(),
+                  fullName: $("#fullName").val(),
+                  email: $("#email").val()
+                }
+
+                $.ajax({
+                  url: '/dsaApp/user/register',
+                  type: 'POST',
+                  contentType: "application/json",
+                  data: JSON.stringify(registerObj),
+                  dataType: 'json',
+                  success: function (json){
+                    console.log('success')
+                    document.location.href = document.location.origin + '/'
+                  },
+                  error: function (xhr, status,error){
+                    window.alert(error)
+                    console.log(status)
+                    console.log(error)
+                  },
+                  complete: function (xhr, status){
+                    console.log(status)
+                    $(".loader-container").hide();
+                  },
+                  timeout : 10000
+                })
+
+              }else{
+                window.alert("Passwords do not match!")
+              }
+
+            });
+        });
+    </script>
+  </head>
+  <body>
+
+      <div class="register-form">
+        <h1>Register</h1>
+
+        <div class="textbox">
+          <i class="fas fa-gamepad"></i>
+          <input type="text" placeholder="Username" id="userName">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Full name" id="fullName">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" id="email">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" id="password">
+        </div>
+        <div class="textbox">
+          <i class="fas fa-redo-alt"></i>
+          <input type="password" placeholder="Confirm password" id="confPassword">
+        </div>
+
+        <input type="submit" class="btn" value="SING UP NOW">
+        
+      </div>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+
+
+
+  </body>
+</html>

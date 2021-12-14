@@ -45,9 +45,9 @@ public class GameManagerDAOImpl implements GameManager{
     public User addUser(User user) {
         logger.info("New user " +user.getUserName()+" -> "+ user);
         Player player = new Player(user.getUserName()); // by default player name = username
-        String playerId = session.saveNewUser(player);
+        String playerId = session.save(player);
         user.setPlayerId(playerId);
-        session.save(user);
+        session.saveNewUser(user);
         logger.info("New user added");
         return user;
     }

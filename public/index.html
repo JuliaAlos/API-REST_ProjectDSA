@@ -24,12 +24,13 @@
           data: JSON.stringify({userName: user, password: psw}),
           dataType: 'json',
           success: function (json){
-            console.log('sucess')
-            console.log(json)
+            console.log('success')
+            document.location.href = document.location.origin + '/home'
           },
           error: function (xhr, status,error){
             console.log(status)
             console.log(error)
+            window.alert(error)
           },
           complete: function (xhr, status){
             console.log(status)
@@ -62,7 +63,7 @@
   <input type="submit" class="btn" value="SIGN IN">
 
   <div class="bottom-text">
-    Don't have account? <a href="register.html" id="register">Sign up</a>
+    Don't have account? <a href="register/index.html" id="register">Sign up</a>
   </div>
 
 </div>

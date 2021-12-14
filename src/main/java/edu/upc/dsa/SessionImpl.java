@@ -267,7 +267,7 @@ public class SessionImpl implements Session {
     }
 
     public String saveNewUser(Object entity){
-        String insertQuery = QueryHelper.createQueryINSERT(entity);
+        String insertQuery = QueryHelper.createQueryINSERT_encryptPassword(entity);
 
         PreparedStatement pstm = null;
 
