@@ -77,5 +77,6 @@ INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 1', 'Tipo1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 2', 'Tipo2');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 3', 'Tipo3');
 
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 10, 3, 1, 1, 9.81);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 10, 3, 3, 1, 9.81);
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 5, 1, 5, 5, 9.81);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Cessna', 6, 2, 1, 2, 9.81);
