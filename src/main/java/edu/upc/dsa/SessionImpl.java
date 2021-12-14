@@ -62,6 +62,8 @@ public class SessionImpl implements Session {
 
     }
 
+
+
     public void close() {
 
     }
@@ -262,5 +264,32 @@ public class SessionImpl implements Session {
 
 
         return null;
+    }
+
+    public String saveNewUser(Object entity){
+        String insertQuery = QueryHelper.createQueryINSERT(entity);
+
+        PreparedStatement pstm = null;
+
+
+        try {
+            pstm = conn.prepareStatement(insertQuery);
+
+            String id = UUID.randomUUID().toString();
+            ObjectHelper.setter(entity, "Id", id);
+
+            int i = 1;
+            for (String field: ObjectHelper.getFields(entity)) {
+                pstm.setObject(i++, ObjectHelper.getter(entity, field));
+            }
+
+            pstm.executeQuery();
+
+            return id;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

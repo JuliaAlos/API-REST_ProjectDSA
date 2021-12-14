@@ -8,43 +8,30 @@ import java.util.HashMap;
 public class QueryHelper {
 
     public static String createQueryINSERT(Object entity) {
-//
-//        StringBuffer sb = new StringBuffer("INSERT INTO ");
-//        sb.append(entity.getClass().getSimpleName()).append(" ");
-//        sb.append("(");
-//
-//        String [] fields = ObjectHelper.getFields(entity);
-//
-//        sb.append(fields[0]);
-//        for (int i =1; i<fields.length; i++) {
-//            sb.append(", ").append(fields[i]);
-//        }
-//
-//        sb.append(") VALUES (");
-//        try {
-//            Object value = ObjectHelper.getter(entity, fields[0]);
-//            if (entity.getClass().getDeclaredField(fields[0]).getType().equals(String.class) && value != null) {
-//                sb.append("'").append(value).append("'");
-//            } else {
-//                sb.append(ObjectHelper.getter(entity, fields[0]));
-//            }
-//
-//            for (int i = 1; i < fields.length; i++) {
-//                sb.append(", ");
-//                Object v = ObjectHelper.getter(entity, fields[i]);
-//                if (entity.getClass().getDeclaredField(fields[i]).getType().equals(String.class) && v != null) {
-//                    sb.append("'").append(v).append("'");
-//                } else {
-//                    sb.append(ObjectHelper.getter(entity, fields[i]));
-//                }
-//            }
-//        }catch (NoSuchFieldException e){
-//            e.printStackTrace();
-//        }
-//
-//        sb.append(")");
-//
-//        return sb.toString();
+        StringBuffer sb = new StringBuffer("INSERT INTO ");
+        sb.append(entity.getClass().getSimpleName()).append(" ");
+        sb.append("(");
+
+        String [] fields = ObjectHelper.getFields(entity);
+
+        sb.append(fields[0]);
+        for (int i = 1; i< fields.length ;i++){
+            sb.append(", ").append(fields[i]);
+        }
+
+        sb.append(") VALUES (?");
+
+        for (int i = 1; i< fields.length ;i++){
+            sb.append(", ?");
+        }
+
+        sb.append(")");
+
+        return sb.toString();
+
+    }
+
+    public static String createQueryINSERT_encryptPassword(Object entity) {
 
         StringBuffer sb = new StringBuffer("INSERT INTO ");
         sb.append(entity.getClass().getSimpleName()).append(" ");
@@ -52,7 +39,6 @@ public class QueryHelper {
 
         String [] fields = ObjectHelper.getFields(entity);
 
-   //     sb.append("ID");
         sb.append(fields[0]);
         Integer passwordPos = null;
         for (int i = 1; i< fields.length ;i++){
@@ -98,11 +84,10 @@ public class QueryHelper {
         String[] fields = ObjectHelper.getAllFieldsButId(entity);
 
         for (String field : fields){
-            if(field.equals("password")){
-                sb.append(field).append(" = ").append("MD5(?)").append(",");
-            }else {
+//            if(field.equals("password")){
+//                sb.append(field).append(" = ").append("MD5(?)").append(",");
                 sb.append(field).append(" = ").append("?").append(",");
-            }
+//            }
         }
 
         sb.deleteCharAt(sb.length()-1);
