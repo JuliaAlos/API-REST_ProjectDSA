@@ -32,4 +32,60 @@ public class PlaneTO {
         this.velY = planeModel.getVelY();
         this.gravity = planeModel.getGravity();
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Integer getEnginesLife() {
+        return enginesLife;
+    }
+
+    public Integer getVelY() {
+        return velY;
+    }
+
+    public Integer getVelX() {
+        return velX;
+    }
+
+    public Double getGravity() {
+        return gravity;
+    }
+
+    public Integer getFuel() {
+        return fuel;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public void setFuel(Integer fuel) {
+        this.fuel = fuel;
+    }
+
+    public void setEnginesLife(Integer enginesLife) {
+        this.enginesLife = enginesLife;
+    }
+
+    public void setVelX(Integer velX) {
+        this.velX = velX;
+    }
+
+    public void setVelY(Integer velY) {
+        this.velY = velY;
+    }
+
+    public void setGravity(Double gravity) {
+        this.gravity = gravity;
+    }
 }
