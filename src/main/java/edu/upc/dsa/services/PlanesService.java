@@ -93,7 +93,7 @@ public class PlanesService {
     //------------------------------
 
     @GET
-    @ApiOperation(value = "Get the list of planes of a player.", notes = "asdasd", response = Plane.class, responseContainer="List")
+    @ApiOperation(value = "Get the list of planes of a player.", notes = "asdasd", response = PlaneTO.class, responseContainer="List")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "The player has no planes yet.")
