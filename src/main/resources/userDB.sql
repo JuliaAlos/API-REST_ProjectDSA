@@ -80,5 +80,5 @@ INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('A
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 5, 1, 5, 5, 9.81);
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Cessna', 6, 2, 1, 2, 9.81);
 
-INSERT INTO Plane(PlayerId, PlaneModelModel) VALUES ((SELECT id from Player WHERE PlayerName = 'arnau player'), 'Airbus');
-INSERT INTO Plane(PlayerId, PlaneModelModel) VALUES ((SELECT id from Player WHERE PlayerName = 'arnau player'), 'Cessna');
+INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'arnau player'), 'Airbus', '1');
+INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'arnau player'), 'Cessna', '2');
