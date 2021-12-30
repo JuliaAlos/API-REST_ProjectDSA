@@ -5,7 +5,7 @@ USE insignia;
 
 
 CREATE TABLE Player (
-                        Id varchar(255) UNIQUE PRIMARY KEY,
+                        Id varchar(255) PRIMARY KEY,
                         PlayerName varchar(255) UNIQUE NOT NULL,
                         MaxDistance integer DEFAULT 0,
                         Rol varchar(255) DEFAULT 'ROOKIE',
@@ -16,7 +16,7 @@ CREATE TABLE Player (
 );
 
 CREATE TABLE User (
-                      Id varchar(255) UNIQUE PRIMARY KEY,
+                      Id varchar(255) PRIMARY KEY,
                       PlayerId varchar(255) NOT NULL,
                       UserName varchar(255) UNIQUE NOT NULL,
                       Password varchar(255) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE InsigniaModel (
 );
 
 CREATE TABLE Insignia (
-                        Id varchar(255) DEFAULT UUID() PRIMARY KEY,
+                        Id varchar(255) PRIMARY KEY,
                         Date varchar(255) DEFAULT 0 NOT NULL,
                         InsigniaModelName varchar(255) NOT NULL,
                         PlayerId varchar(255) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE PlaneModel (
 );
 
 CREATE TABLE Plane (
-                          Id varchar(255) UNIQUE PRIMARY KEY,
+                          Id varchar(255) PRIMARY KEY,
                           PlaneModelModel varchar(255) NOT NULL,
                           PlayerId varchar(255) NOT NULL,
                           FOREIGN KEY (PlayerId) references Player(Id),
