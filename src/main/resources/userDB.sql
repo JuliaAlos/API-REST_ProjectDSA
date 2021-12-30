@@ -68,9 +68,9 @@ CREATE TABLE Plane (
 INSERT INTO Player(PlayerName, Id) VALUES ('Pau', 'IdPau');
 INSERT INTO Player(PlayerName, Id) VALUES ('Julia', 'IdJulia');
 INSERT INTO Player(PlayerName, Id) VALUES ('Arnau', 'IdArnau');
-INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Pau', MD5('Pau'),(SELECT id from Player WHERE PlayerName = 'pau player'), 'A');
-INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Arnau', MD5('Arnau'),(SELECT id from Player WHERE PlayerName = 'arnau player'),'B');
-INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Julia', MD5('Julia'),(SELECT id from Player WHERE PlayerName = 'julia player'), 'C');
+INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Pau', MD5('Pau'),(SELECT id from Player WHERE PlayerName = 'Pau'), 'A');
+INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Arnau', MD5('Arnau'),(SELECT id from Player WHERE PlayerName = 'Arnau'),'B');
+INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Julia', MD5('Julia'),(SELECT id from Player WHERE PlayerName = 'Julia'), 'C');
 
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 1', 'Tipo1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 2', 'Tipo2');
