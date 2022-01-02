@@ -1,9 +1,7 @@
 package edu.upc.dsa.services;
 
-import edu.upc.dsa.GameManagerDAOImpl;
+import edu.upc.dsa.*;
 import edu.upc.dsa.models.*;
-import edu.upc.dsa.GameManager;
-import edu.upc.dsa.GameManagerImpl;
 import edu.upc.dsa.transferObjects.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,9 +21,12 @@ import java.util.List;
 public class GameService {
 
     private GameManager manager;
+    private PlanesManager managerPlanes;
 
     public GameService() {
         this.manager = GameManagerDAOImpl.getInstance();
+        this.managerPlanes = PlanesManagerDAOImpl.getInstance();
+
 
     }
 
@@ -43,6 +44,7 @@ public class GameService {
         if (manager.existUser(user.getUserName()))  return Response.status(409).build();
         User newUser = user.toUser();
         this.manager.addUser(newUser);
+        this.managerPlanes.addPlaneToPlayer("Cessna",user.getUserName());
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
         return Response.status(201).entity(userTO).build();
     }
