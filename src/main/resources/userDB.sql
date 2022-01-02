@@ -76,12 +76,11 @@ INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 1', 'Tipo1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 2', 'Tipo2');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 3', 'Tipo3');
 
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 10, 3, 3, 1, 9.81);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 5, 1, 5, 5, 9.81);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Cessna', 6, 2, 1, 2, 9.81);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Helicopter', 8, 2, 2, 7, 9.81);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Acrobatic', 5, 2, 2, 10, 9.81);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 60, 60, 70, 40, 100);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 80, 20, 90, 60, 50);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Cessna', 20, 30, 40, 70, 20);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Helicopter', 50, 50, 50, 70, 60);
+INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Acrobatic', 20, 20, 60, 80, 20);
 
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Arnau'), 'Airbus', '1');
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Arnau'), 'Cessna', '2');
-INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Arnau'), 'Acrobatic', '3');
