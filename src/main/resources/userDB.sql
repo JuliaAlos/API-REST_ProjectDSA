@@ -31,8 +31,9 @@ CREATE TABLE InsigniaModel (
 );
 
 CREATE TABLE Insignia (
-                        Name varchar(255) PRIMARY KEY,
-                        FOREIGN KEY (Name) references InsigniaModel,
+                        Id varchar(255) PRIMARY KEY,
+                        Name varchar(255) NOT NULL,
+                        FOREIGN KEY (Name) references InsigniaModel(Name)
                         Data varchar(255) DEFAULT 0 NOT NULL,
                         PlayerId varchar(255) NOT NULL,
                         FOREIGN KEY (PlayerId) references Player(Id)
@@ -80,7 +81,7 @@ INSERT INTO InsigniaModel(Name, Type) VALUES ('Zombie', 'Tipo3');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Scorched', 'Tipo3');
 
 
-INSERT INTO Insignia(Name, Data, PlayerId) VALUES ('Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Marc'));
+INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('welcome', 'Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 
 
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 60, 60, 70, 40, 100);

@@ -44,13 +44,13 @@ public class InsigniasManagerDAOImpl implements InsigniasManager{
     }
 
     @Override
-    public void addInsigniaToPlayer(String insigniaName, String playerName) {
+    public void addInsigniaToPlayer(String idInsignia, String insigniaName, String playerName) {
         logger.info("Add insignia "+ insigniaName+" to " + playerName);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         Player p = (Player) session.getByUsername(Player.class, playerName);
 
-        Insignia insignia = new Insignia(dtf.format(now).toString(), insigniaName, p.getId());
+        Insignia insignia = new Insignia(idInsignia, dtf.format(now).toString(), insigniaName, p.getId());
 
         session.save(insignia);
 

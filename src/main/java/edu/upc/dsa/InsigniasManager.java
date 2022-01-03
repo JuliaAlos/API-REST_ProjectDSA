@@ -8,7 +8,7 @@ import java.util.List;
 public interface InsigniasManager {
     List<InsigniaModel> getAll();
     List<Insignia> getAllFromPlayer(String playerName);
-    void addInsigniaToPlayer(String insigniaName, String playerName);
+    void addInsigniaToPlayer(String idInsignia, String insigniaName, String playerName);
     Boolean existInsigniaModel(String insigniaName);
     Boolean existPlayer(String playerName);
 }
