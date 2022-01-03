@@ -70,6 +70,7 @@ INSERT INTO Player(PlayerName, Id) VALUES ('Marc', 'IdMarc');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Pau', MD5('Pau'),(SELECT id from Player WHERE PlayerName = 'Pau'), 'A');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Arnau', MD5('Arnau'),(SELECT id from Player WHERE PlayerName = 'Arnau'),'B');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Julia', MD5('Julia'),(SELECT id from Player WHERE PlayerName = 'Julia'), 'C');
+INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Marc', MD5('Marc'),(SELECT id from Player WHERE PlayerName = 'Marc'), 'D');
 
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Welcome', 'Tipo1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Diamond', 'Tipo2');
