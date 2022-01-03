@@ -82,6 +82,9 @@ INSERT INTO InsigniaModel(Name, Type) VALUES ('Scorched', 'Tipo3');
 
 
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('welcome', 'Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Marc'));
+INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('welcome', 'Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Pau'));
+INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('welcome', 'Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Julia'));
+INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('welcome', 'Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Arnau'));
 
 
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 60, 60, 70, 40, 100);
