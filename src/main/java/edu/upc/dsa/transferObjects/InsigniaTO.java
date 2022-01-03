@@ -19,7 +19,7 @@ public class InsigniaTO {
 
     public InsigniaTO(Insignia insignia) {
         this();
-        InsigniaModel insigniaModel = (InsigniaModel) SessionImpl.getInstance().findAll(InsigniaModel.class, new HashMap<String, Object>(){{put("name", insignia.getInsigniaModelName());}}).get(0);
+        InsigniaModel insigniaModel = (InsigniaModel) SessionImpl.getInstance().findAll(InsigniaModel.class, new HashMap<String, Object>(){{put("name", insignia.getName());}}).get(0);
         Player p =(Player) SessionImpl.getInstance().get(Player.class, insignia.getPlayerId());
         this.date = insignia.getDate();
         this.playerName = p.getPlayerName();

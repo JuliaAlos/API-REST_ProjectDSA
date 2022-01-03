@@ -31,12 +31,10 @@ CREATE TABLE InsigniaModel (
 );
 
 CREATE TABLE Insignia (
-                        Id varchar(255) PRIMARY KEY,
-                        Date varchar(255) DEFAULT 0 NOT NULL,
-                        InsigniaModelName varchar(255) NOT NULL,
+                        Name varchar(255) PRIMARY KEY,
+                        Data varchar(255) DEFAULT 0 NOT NULL,
                         PlayerId varchar(255) NOT NULL,
-                        FOREIGN KEY (PlayerId) references Player(Id),
-                        FOREIGN KEY (InsigniaModelName) references InsigniaModel(Name)
+                        FOREIGN KEY (PlayerId) references Player(Id)
 );
 
 
@@ -68,13 +66,20 @@ CREATE TABLE Plane (
 INSERT INTO Player(PlayerName, Id) VALUES ('Pau', 'IdPau');
 INSERT INTO Player(PlayerName, Id) VALUES ('Julia', 'IdJulia');
 INSERT INTO Player(PlayerName, Id) VALUES ('Arnau', 'IdArnau');
+INSERT INTO Player(PlayerName, Id) VALUES ('Marc', 'IdMarc');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Pau', MD5('Pau'),(SELECT id from Player WHERE PlayerName = 'Pau'), 'A');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Arnau', MD5('Arnau'),(SELECT id from Player WHERE PlayerName = 'Arnau'),'B');
 INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Julia', MD5('Julia'),(SELECT id from Player WHERE PlayerName = 'Julia'), 'C');
 
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 1', 'Tipo1');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 2', 'Tipo2');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Insignia 3', 'Tipo3');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Welcome', 'Tipo1');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Diamond', 'Tipo2');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('First_purchase', 'Tipo3');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Zombie', 'Tipo3');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Scorched', 'Tipo3');
+
+
+INSERT INTO Insignia(Name, Data, PlayerId) VALUES ('Welcome',  '1/1/2000' , (SELECT id from Player WHERE PlayerName = 'Marc'));
+
 
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 60, 60, 70, 40, 100);
 INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 80, 20, 90, 60, 50);
