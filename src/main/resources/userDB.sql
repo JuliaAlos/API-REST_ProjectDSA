@@ -32,6 +32,7 @@ CREATE TABLE InsigniaModel (
 
 CREATE TABLE Insignia (
                         Name varchar(255) PRIMARY KEY,
+                        FOREIGN KEY (Name) references InsigniaModel,
                         Data varchar(255) DEFAULT 0 NOT NULL,
                         PlayerId varchar(255) NOT NULL,
                         FOREIGN KEY (PlayerId) references Player(Id)
