@@ -22,10 +22,12 @@ public class GameService {
 
     private GameManager manager;
     private PlanesManager managerPlanes;
+    private InsigniasManager managerInsignias;
 
     public GameService() {
         this.manager = GameManagerDAOImpl.getInstance();
         this.managerPlanes = PlanesManagerDAOImpl.getInstance();
+        this.managerInsignias = InsigniasManagerDAOImpl.getInstance();
 
 
     }
@@ -45,6 +47,7 @@ public class GameService {
         User newUser = user.toUser();
         this.manager.addUser(newUser);
         this.managerPlanes.addPlaneToPlayer("Cessna",user.getUserName());
+        this.managerInsignias.addInsigniaToPlayer("Welcome", user.getUserName());
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
         return Response.status(201).entity(userTO).build();
     }

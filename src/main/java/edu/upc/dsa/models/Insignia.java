@@ -9,9 +9,8 @@ public class Insignia {
     public Insignia() {
     }
 
-    public Insignia(String insigniaID, String date, String name, String playerId) {
+    public Insignia(String date, String name, String playerId) {
         this();
-        this.insigniaID = insigniaID;
         this.date = date;
         this.name = name;
         this.playerId = playerId;
@@ -23,13 +22,6 @@ public class Insignia {
      **********************    Getters & Setters   ************************
      **********************************************************************/
 
-    public String getInsigniaID() {
-        return insigniaID;
-    }
-
-    public void setInsigniaID(String insigniaID) {
-        this.insigniaID = insigniaID;
-    }
     public String getDate() {
         return date;
     }
