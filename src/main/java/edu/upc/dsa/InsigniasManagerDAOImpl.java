@@ -45,7 +45,7 @@ public class InsigniasManagerDAOImpl implements InsigniasManager{
 
     @Override
     public void addInsigniaToPlayer(String insigniaName, String playerName) {
-        logger.info("Add insignia "+ insigniaName+" to " + playerName);
+        logger.info("Add insignia "+ insigniaName +" to " + playerName);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         Player p = (Player) session.getByUsername(Player.class, playerName);
