@@ -67,8 +67,6 @@ CREATE TABLE Upgrade (
                           ModificationCode varchar(255) NOT NULL,
                           PlaneModelModel varchar(255) NOT NULL,
                           PlayerName varchar(255) NOT NULL,
-                          FOREIGN KEY (PlayerId) references Player(Id),
-                          FOREIGN KEY (PlaneModelModel) references PlaneModel(Model)
 );
 
 
