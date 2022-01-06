@@ -66,7 +66,7 @@ CREATE TABLE Upgrade (
                           Id varchar(255) PRIMARY KEY,
                           ModificationCode varchar(255) NOT NULL,
                           PlaneModelModel varchar(255) NOT NULL,
-                          PlayerName varchar(255) NOT NULL,
+                          PlayerName varchar(255) NOT NULL
 );
 
 
