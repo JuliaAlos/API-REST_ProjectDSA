@@ -98,6 +98,7 @@ INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('1', 'Welcome',  '1/2/202
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('2', 'Welcome',  '1/3/2021' , (SELECT id from Player WHERE PlayerName = 'Pau'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('3', 'Welcome',  '1/1/2021' , (SELECT id from Player WHERE PlayerName = 'Julia'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('4', 'Welcome',  '1/4/2021' , (SELECT id from Player WHERE PlayerName = 'Arnau'));
+INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('5', 'Scorched',  '1/5/2021' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 
 INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Airbus', 60, 40, 60, 100, 70, 90, 40, 60, 100, 80);
 INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Fighter', 80, 50, 20, 50, 90, 100, 60, 90, 50, 40);

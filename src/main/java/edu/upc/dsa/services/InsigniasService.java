@@ -82,7 +82,7 @@ public class InsigniasService {
     })
     @Path("/getListInsigniasPlayer/{playername}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getListsInsigniasPlayer (@PathParam("playername") String playername) {
+    public Response getListInsigniasPlayer(@PathParam("playername") String playername) {
         List <Insignia> listInsignia = this.manager.getAllFromPlayer(playername);
         List<InsigniaTO> listInsigniaPlayer = new LinkedList<>();
         listInsignia.forEach(insignia -> listInsigniaPlayer.add(new InsigniaTO(insignia)));
