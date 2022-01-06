@@ -147,7 +147,6 @@ public class PlanesService {
     @Path("/getAllUpgradesFromPlayer/{playername}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUpgradesFromPlayer (@PathParam("playername") String playername) {
-
         List<Upgrade> listUpgrades = this.manager.getAllUpgradesFromPlayer(playername);
         GenericEntity<List<Upgrade>> entity = new GenericEntity<List<Upgrade>>(listUpgrades){};
 
