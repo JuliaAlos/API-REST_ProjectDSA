@@ -78,4 +78,22 @@ public class PlanesManagerDAOImpl implements PlanesManager{
         logger.info(playerName+" not found");
         return false;
     }
+
+    @Override
+    public void addUpgradeToPlayer (String modificationCode, String playerName, String planeModel){
+        logger.info("Add upgrade with code "+ modificationCode+" to " + "plane: " + planeModel + "from player: " + playerName);
+
+        Player p = (Player) session.getByUsername(Player.class, playerName);
+
+        Upgrade upgrade = new Upgrade(modificationCode, playerName, planeModel);
+
+        session.save(upgrade);
+    }
+
+    @Override
+    public List<Upgrade> getAllUpgradesFromPlayer(String playerName) {
+        logger.info("Get all upgrades from " + playerName);
+        Player p = (Player) session.getByUsername(Player.class, playerName);
+        return p.getUpgradesList();
+    }
 }

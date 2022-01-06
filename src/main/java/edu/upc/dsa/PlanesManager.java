@@ -1,9 +1,6 @@
 package edu.upc.dsa;
 
-import edu.upc.dsa.models.Insignia;
-import edu.upc.dsa.models.InsigniaModel;
-import edu.upc.dsa.models.Plane;
-import edu.upc.dsa.models.PlaneModel;
+import edu.upc.dsa.models.*;
 
 import java.util.List;
 
@@ -14,4 +11,6 @@ public interface PlanesManager {
     void addPlaneToPlayer(String planeModel, String playerName);
     Boolean existPlaneModel(String planeModel);
     Boolean existPlayer(String playerName);
+    void addUpgradeToPlayer (String modificationCode, String playerName, String planeModel);
+    List<Upgrade> getAllUpgradesFromPlayer(String playerName);
 }

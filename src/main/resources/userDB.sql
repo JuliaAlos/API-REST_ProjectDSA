@@ -43,16 +43,30 @@ CREATE TABLE Insignia (
 CREATE TABLE PlaneModel (
                                Model varchar(255) NOT NULL UNIQUE PRIMARY KEY,
                                Fuel integer NOT NULL,
+                               MinFuel integer NOT NULL,
                                EnginesLife integer NOT NULL,
+                               MaxEnginesLife integer NOT NULL,
                                VelX integer NOT NULL,
+                               MaxSpeed integer NOT NULL,
                                VelY integer NOT NULL,
-                               Gravity double default 9.81 NOT NULL
+                               MaxManoeuvrability integer NOT NULL,
+                               Gravity double default 9.81 NOT NULL,
+                               MinGravity integer NOT NULL
 );
 
 CREATE TABLE Plane (
                           Id varchar(255) PRIMARY KEY,
                           PlaneModelModel varchar(255) NOT NULL,
                           PlayerId varchar(255) NOT NULL,
+                          FOREIGN KEY (PlayerId) references Player(Id),
+                          FOREIGN KEY (PlaneModelModel) references PlaneModel(Model)
+);
+
+CREATE TABLE Upgrade (
+                          Id varchar(255) PRIMARY KEY,
+                          ModificationCode varchar(255) NOT NULL,
+                          PlaneModelModel varchar(255) NOT NULL,
+                          PlayerName varchar(255) NOT NULL,
                           FOREIGN KEY (PlayerId) references Player(Id),
                           FOREIGN KEY (PlaneModelModel) references PlaneModel(Model)
 );
@@ -85,11 +99,11 @@ INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('2', 'Welcome',  '1/3/202
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('3', 'Welcome',  '1/1/2021' , (SELECT id from Player WHERE PlayerName = 'Julia'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('4', 'Welcome',  '1/4/2021' , (SELECT id from Player WHERE PlayerName = 'Arnau'));
 
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Airbus', 60, 60, 70, 40, 100);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Fighter', 80, 20, 90, 60, 50);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Cessna', 20, 30, 40, 70, 20);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Helicopter', 50, 50, 50, 70, 60);
-INSERT INTO PlaneModel(Model, Fuel, EnginesLife, VelX, VelY, Gravity) VALUES ('Acrobatic', 20, 20, 60, 80, 20);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Airbus', 60, 40, 60, 100, 70, 90, 40, 60, 100, 80);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Fighter', 80, 50, 20, 50, 90, 100, 60, 90, 50, 40);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Cessna', 20, 10, 30, 50, 40, 60, 70, 90, 20, 10);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Helicopter', 50, 30, 50, 80, 50, 80, 70, 90, 60, 40);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Acrobatic', 20, 10, 20, 40, 60, 80, 80, 100, 20, 10);
 
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Arnau'), 'Cessna', '1');
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Pau'), 'Cessna', '2');

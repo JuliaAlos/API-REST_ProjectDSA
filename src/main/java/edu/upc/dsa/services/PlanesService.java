@@ -3,7 +3,6 @@ package edu.upc.dsa.services;
 import edu.upc.dsa.PlanesManager;
 import edu.upc.dsa.PlanesManagerDAOImpl;
 import edu.upc.dsa.models.*;
-import edu.upc.dsa.transferObjects.InsigniaTO;
 import edu.upc.dsa.transferObjects.PlanePlayerTO;
 import edu.upc.dsa.transferObjects.PlaneTO;
 import io.swagger.annotations.Api;
@@ -108,6 +107,51 @@ public class PlanesService {
 
         GenericEntity<List<PlaneTO>> entity = new GenericEntity<List<PlaneTO>>(listPlanePlayer){};
         if (listPlanePlayer.size() == 0){
+            return Response.status(404).build();
+        }
+        else{
+            return Response.status(200).entity(entity).build();
+        }
+    }
+
+    //------------------------------
+
+    @POST
+    @ApiOperation(value = "Add an upgrade to a plane of a player", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Upgrade added"),
+            @ApiResponse(code = 409, message = "No plane or player found in the system.")
+
+    })
+
+    @Path("/addUpgradeToPlayer")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response addUpgradeToPlayer(Upgrade upgrade) {
+        if (this.manager.existPlaneModel(upgrade.getPlaneModelModel()) && (this.manager.existPlayer(upgrade.getPlayerName()))){
+            this.manager.addUpgradeToPlayer(upgrade.getModificationCode(), upgrade.getPlayerName(), upgrade.getPlaneModelModel());
+            return Response.status(201).build();
+        }
+        else{
+            return Response.status(409).build();
+        }
+    }
+
+    //------------------------------
+
+    @GET
+    @ApiOperation(value = "Get the list of upgrades of the planes of a player.", notes = "asdasd", response = Upgrade.class, responseContainer="List")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "The player has no upgrades yet.")
+    })
+    @Path("/getAllUpgradesFromPlayer/{playername}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllUpgradesFromPlayer (@PathParam("playername") String playername) {
+
+        List<Upgrade> listUpgrades = this.manager.getAllUpgradesFromPlayer(playername);
+        GenericEntity<List<Upgrade>> entity = new GenericEntity<List<Upgrade>>(listUpgrades){};
+
+        if (listUpgrades.size() == 0){
             return Response.status(404).build();
         }
         else{

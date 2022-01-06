@@ -48,6 +48,12 @@ public class Player {
         return l;
     }
 
+    public List<Upgrade> getUpgradesList(){
+        List<Upgrade> l = new LinkedList<>();
+        SessionImpl.getInstance().findAll(Upgrade.class, new HashMap<String, Object>(){{put("playerName",playerName);}}).forEach(el -> l.add((Upgrade) el));
+        return l;
+    }
+
 
 
     /**********************************************************************

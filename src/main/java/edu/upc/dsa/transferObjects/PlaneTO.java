@@ -10,13 +10,13 @@ import java.util.HashMap;
 
 public class PlaneTO {
 
-    private String model;
     private String playerName;
-    private Integer fuel;
-    private Integer enginesLife;
-    private Integer velX;
-    private Integer velY;
-    private Double gravity;
+    private String model;
+    private Integer fuel, minFuel;
+    private Integer enginesLife, maxEnginesLife;
+    private Integer velX, maxSpeed;
+    private Integer velY, maxManoeuvrability;
+    private Double gravity, minWeight;
 
     public PlaneTO() {
     }
@@ -27,10 +27,15 @@ public class PlaneTO {
         this.model = plane.getPlaneModelModel();
         this.playerName = p.getPlayerName();
         this.fuel = planeModel.getFuel();
+        this.minFuel = planeModel.getMinFuel();
         this.enginesLife = planeModel.getEnginesLife();
+        this.maxEnginesLife = planeModel.getMaxEnginesLife();
         this.velX = planeModel.getVelX();
+        this.maxSpeed = planeModel.getMaxSpeed();
         this.velY = planeModel.getVelY();
+        this.maxManoeuvrability = planeModel.getMaxManoeuvrability();
         this.gravity = planeModel.getGravity();
+        this.minWeight = planeModel.getMinWeight();
     }
 
     public String getModel() {
@@ -39,6 +44,26 @@ public class PlaneTO {
 
     public Integer getEnginesLife() {
         return enginesLife;
+    }
+
+    public Double getMinWeight() {
+        return minWeight;
+    }
+
+    public Integer getMaxManoeuvrability() {
+        return maxManoeuvrability;
+    }
+
+    public Integer getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public Integer getMaxEnginesLife() {
+        return maxEnginesLife;
+    }
+
+    public Integer getMinFuel() {
+        return minFuel;
     }
 
     public Integer getVelY() {
@@ -87,5 +112,25 @@ public class PlaneTO {
 
     public void setGravity(Double gravity) {
         this.gravity = gravity;
+    }
+
+    public void setMinWeight(Double minWeight) {
+        this.minWeight = minWeight;
+    }
+
+    public void setMaxManoeuvrability(Integer maxManoeuvrability) {
+        this.maxManoeuvrability = maxManoeuvrability;
+    }
+
+    public void setMaxSpeed(Integer maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
+
+    public void setMaxEnginesLife(Integer maxEnginesLife) {
+        this.maxEnginesLife = maxEnginesLife;
+    }
+
+    public void setMinFuel(Integer minFuel) {
+        this.minFuel = minFuel;
     }
 }
