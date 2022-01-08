@@ -144,6 +144,7 @@ public class PlanesService {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "The player has no upgrades yet.")
     })
+
     @Path("/getAllUpgradesFromPlayer/{playername}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllUpgradesFromPlayer (@PathParam("playername") String playername) {
