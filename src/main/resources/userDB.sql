@@ -50,7 +50,7 @@ CREATE TABLE PlaneModel (
                                VelY integer NOT NULL,
                                MaxManoeuvrability integer NOT NULL,
                                Gravity integer NOT NULL,
-                               MinGravity integer NOT NULL
+                               MinWeight integer NOT NULL
 );
 
 CREATE TABLE Plane (
@@ -97,11 +97,11 @@ INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('3', 'Welcome',  '1/1/202
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('4', 'Welcome',  '1/4/2021' , (SELECT id from Player WHERE PlayerName = 'Arnau'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('5', 'Scorched',  '1/5/2021' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 
-INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Airbus', 60, 40, 60, 100, 70, 90, 40, 60, 100, 80);
-INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Fighter', 80, 50, 20, 50, 90, 100, 60, 90, 50, 40);
-INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Cessna', 20, 10, 30, 50, 40, 60, 70, 90, 20, 10);
-INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Helicopter', 50, 30, 50, 80, 50, 80, 70, 90, 60, 40);
-INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinGravity) VALUES ('Acrobatic', 20, 10, 20, 40, 60, 80, 80, 100, 20, 10);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Airbus', 60, 40, 60, 100, 70, 90, 40, 60, 100, 80);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Fighter', 80, 50, 20, 50, 90, 100, 60, 90, 50, 40);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Cessna', 20, 10, 30, 50, 40, 60, 70, 90, 20, 10);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Helicopter', 50, 30, 50, 80, 50, 80, 70, 90, 60, 40);
+INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Acrobatic', 20, 10, 20, 40, 60, 80, 80, 100, 20, 10);
 
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Arnau'), 'Cessna', '1');
 INSERT INTO Plane(PlayerId, PlaneModelModel, Id) VALUES ((SELECT id from Player WHERE PlayerName = 'Pau'), 'Cessna', '2');
