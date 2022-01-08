@@ -99,8 +99,6 @@ public class SessionImpl implements Session {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
 

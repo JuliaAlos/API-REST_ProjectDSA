@@ -26,7 +26,6 @@ public class User {
 
     public User() {}
 
-
     public User(String id, String playerId, String userName, String password) {
         this.userName = userName;
         this.password = password;
