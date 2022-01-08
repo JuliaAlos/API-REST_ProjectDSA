@@ -5,42 +5,42 @@ USE insignia;
 
 
 CREATE TABLE Player (
-                        Id varchar(30) PRIMARY KEY,
-                        PlayerName varchar(30) UNIQUE NOT NULL,
+                        Id varchar(255) PRIMARY KEY,
+                        PlayerName varchar(255) UNIQUE NOT NULL,
                         MaxDistance integer DEFAULT 0,
-                        Rol varchar(25305) DEFAULT 'ROOKIE',
+                        Rol varchar(255) DEFAULT 'ROOKIE',
                         TimeOfFlight integer DEFAULT 0,
                         Bitcoins integer DEFAULT 0
 );
 
 CREATE TABLE User (
-                      Id varchar(30) PRIMARY KEY,
-                      PlayerId varchar(30) NOT NULL,
-                      UserName varchar(30) UNIQUE NOT NULL,
-                      Password varchar(30) NOT NULL,
-                      FullName varchar(30),
-                      Email varchar(30),
+                      Id varchar(255) PRIMARY KEY,
+                      PlayerId varchar(255) NOT NULL,
+                      UserName varchar(255) UNIQUE NOT NULL,
+                      Password varchar(255) NOT NULL,
+                      FullName varchar(255),
+                      Email varchar(255),
                       Status BOOLEAN DEFAULT FALSE NOT NULL,
                       FOREIGN KEY (PlayerId) references Player(Id)
 );
 
 CREATE TABLE InsigniaModel (
-                               Name varchar(30) NOT NULL UNIQUE PRIMARY KEY,
-                               Type varchar(30) NOT NULL
+                               Name varchar(255) NOT NULL UNIQUE PRIMARY KEY,
+                               Type varchar(255) NOT NULL
 );
 
 CREATE TABLE Insignia (
-                        Id varchar(30) PRIMARY KEY,
-                        Name varchar(30) NOT NULL,
-                        Data varchar(30) DEFAULT 0 NOT NULL,
-                        PlayerId varchar(30) NOT NULL,
+                        Id varchar(255) PRIMARY KEY,
+                        Name varchar(255) NOT NULL,
+                        Data varchar(255) DEFAULT 0 NOT NULL,
+                        PlayerId varchar(255) NOT NULL,
                         FOREIGN KEY (Name) references InsigniaModel(Name),
                         FOREIGN KEY (PlayerId) references Player(Id)
 );
 
 
 CREATE TABLE PlaneModel (
-                               Model varchar(30) NOT NULL UNIQUE PRIMARY KEY,
+                               Model varchar(255) NOT NULL UNIQUE PRIMARY KEY,
                                Fuel integer NOT NULL,
                                MinFuel integer NOT NULL,
                                EnginesLife integer NOT NULL,
@@ -54,18 +54,18 @@ CREATE TABLE PlaneModel (
 );
 
 CREATE TABLE Plane (
-                          Id varchar(30) PRIMARY KEY,
-                          PlaneModelModel varchar(30) NOT NULL,
-                          PlayerId varchar(30) NOT NULL,
+                          Id varchar(255) PRIMARY KEY,
+                          PlaneModelModel varchar(255) NOT NULL,
+                          PlayerId varchar(255) NOT NULL,
                           FOREIGN KEY (PlayerId) references Player(Id),
                           FOREIGN KEY (PlaneModelModel) references PlaneModel(Model)
 );
 
 CREATE TABLE Upgrade (
-                          Id varchar(30) PRIMARY KEY,
-                          ModificationCode varchar(30) NOT NULL,
-                          PlaneModelModel varchar(30) NOT NULL,
-                          PlayerName varchar(30) NOT NULL
+                          Id varchar(255) PRIMARY KEY,
+                          ModificationCode varchar(255) NOT NULL,
+                          PlaneModelModel varchar(255) NOT NULL,
+                          PlayerName varchar(255) NOT NULL
 );
 
 
