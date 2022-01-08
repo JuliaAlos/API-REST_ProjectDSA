@@ -16,7 +16,7 @@ public class PlaneTO {
     private Integer enginesLife, maxEnginesLife;
     private Integer velX, maxSpeed;
     private Integer velY, maxManoeuvrability;
-    private Double gravity, minWeight;
+    private Integer gravity, minWeight;
 
     public PlaneTO() {
     }
@@ -46,7 +46,7 @@ public class PlaneTO {
         return enginesLife;
     }
 
-    public Double getMinWeight() {
+    public Integer getMinWeight() {
         return minWeight;
     }
 
@@ -74,7 +74,7 @@ public class PlaneTO {
         return velX;
     }
 
-    public Double getGravity() {
+    public Integer getGravity() {
         return gravity;
     }
 
@@ -110,11 +110,11 @@ public class PlaneTO {
         this.velY = velY;
     }
 
-    public void setGravity(Double gravity) {
+    public void setGravity(Integer gravity) {
         this.gravity = gravity;
     }
 
-    public void setMinWeight(Double minWeight) {
+    public void setMinWeight(Integer minWeight) {
         this.minWeight = minWeight;
     }
 

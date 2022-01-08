@@ -7,12 +7,12 @@ public class PlaneModel {
     private Integer enginesLife, maxEnginesLife;
     private Integer velX, maxSpeed;
     private Integer velY, maxManoeuvrability;
-    private Double gravity, minWeight;
+    private Integer gravity, minWeight;
 
     public PlaneModel() {
     }
 
-    public PlaneModel(String model, Integer fuel, Integer minFuel, Integer enginesLife, Integer maxEnginesLife,Integer velX, Integer maxSpeed, Integer maxManoeuvrability, Integer velY, Double gravity, Double minWeight) {
+    public PlaneModel(String model, Integer fuel, Integer minFuel, Integer enginesLife, Integer maxEnginesLife,Integer velX, Integer maxSpeed, Integer maxManoeuvrability, Integer velY, Integer gravity, Integer minWeight) {
         this();
         this.model = model;
         this.fuel = fuel;
@@ -100,19 +100,19 @@ public class PlaneModel {
         return maxManoeuvrability;
     }
 
-    public Double getGravity() {
+    public Integer getGravity() {
         return gravity;
     }
 
-    public void setGravity(Double gravity) {
+    public void setGravity(Integer gravity) {
         this.gravity = gravity;
     }
 
-    public void setMinWeight(Double minWeight) {
+    public void setMinWeight(Integer minWeight) {
         this.minWeight = minWeight;
     }
 
-    public Double getMinWeight() {
+    public Integer getMinWeight() {
         return minWeight;
     }
 }
