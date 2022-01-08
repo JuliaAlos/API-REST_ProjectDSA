@@ -50,10 +50,8 @@ public class PlanesManagerDAOImpl implements PlanesManager{
     @Override
     public void addPlaneToPlayer(String planeModel, String playerName) {
         logger.info("Add Plane "+ planeModel+" to " + playerName);
-
         Player p = (Player) session.getByUsername(Player.class, playerName);
         Plane plane = new Plane(planeModel, p.getId());
-
         session.save(plane);
 
     }
@@ -82,11 +80,7 @@ public class PlanesManagerDAOImpl implements PlanesManager{
     @Override
     public void addUpgradeToPlayer (String modificationCode, String playerName, String planeModel){
         logger.info("Add upgrade with code "+ modificationCode+" to " + "plane: " + planeModel + "from player: " + playerName);
-
-        Player p = (Player) session.getByUsername(Player.class, playerName);
-
         Upgrade upgrade = new Upgrade(modificationCode, playerName, planeModel);
-
         session.save(upgrade);
     }
 

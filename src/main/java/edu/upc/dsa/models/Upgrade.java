@@ -6,6 +6,8 @@ public class Upgrade {
     private String playerName;
     private String planeModelModel;
 
+    public Upgrade(){}
+
     public Upgrade(String modification, String playerID, String planeModelModel) {
         this.modificationCode = modification;
         playerName = playerID;

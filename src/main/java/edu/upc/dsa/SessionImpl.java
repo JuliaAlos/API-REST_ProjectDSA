@@ -62,8 +62,6 @@ public class SessionImpl implements Session {
 
     }
 
-
-
     public void close() {
 
     }
