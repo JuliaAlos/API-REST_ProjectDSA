@@ -30,11 +30,11 @@ public class ForumManagerDAOImpl implements ForumManager{
     }
 
     @Override
-    public void addEntry(ForumEntry entry) {
-        logger.info("New entry by user " + entry.getUserName()+ " added");
+    public void addEntry(String playerName, String Message) {
+        logger.info("New entry by user " + playerName + " added");
         List<Object> allEntries = session.findAll(ForumEntry.class);
         Integer current_seq = allEntries.size();
-        entry.setNumSeq(current_seq);
+        ForumEntry entry = new ForumEntry(playerName, Message, current_seq);
         session.save(entry);
         logger.info("Entry added successfully.");
     }

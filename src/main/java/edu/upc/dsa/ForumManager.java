@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ForumManager {
 
-    void addEntry (ForumEntry forumEntry);
+    void addEntry (String playerName, String Message);
     List<ForumEntry> getAllEntries ();
 }

@@ -42,7 +42,7 @@ public class ForumService {
     @Path("/addEntry")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addEntry (ForumEntry entry) {
-        this.manager.addEntry(entry);
+        this.manager.addEntry(entry.getUserName(), entry.getMessage());
         return Response.status(201).build();
     }
 

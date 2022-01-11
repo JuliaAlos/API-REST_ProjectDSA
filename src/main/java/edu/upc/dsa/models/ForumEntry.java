@@ -6,11 +6,13 @@ public class ForumEntry {
     String userName;
     String message;
     Integer numSeq;
+
     public ForumEntry(){}
 
-    public ForumEntry(String userName, String message) {
+    public ForumEntry(String userName, String message, Integer numSeq) {
         this.userName = userName;
         this.message = message;
+        this.numSeq = numSeq;
     }
 
     public void setId(String id) {
