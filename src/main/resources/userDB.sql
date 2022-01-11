@@ -69,7 +69,11 @@ CREATE TABLE Upgrade (
                           PlayerName varchar(255) NOT NULL
 );
 
-
+CREATE TABLE ForumEntry (
+                          Id varchar(255) PRIMARY KEY,
+                          UserName varchar(255) NOT NULL,
+                          Message varchar(255) NOT NULL
+);
 
 
 
