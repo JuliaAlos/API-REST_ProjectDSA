@@ -43,11 +43,7 @@ public class GameManagerImpl implements GameManager{
         logger.info("Instance GameManagerImpl clear");
     }
 
-    @Override
-    public User addUser(String userName, String password, String fullName, String email, String image_url) {
-        return this.addUser(new User(userName,password,fullName,email,image_url));
-        //return null;
-    }
+
 
     @Override
     public User addUser(User user) {

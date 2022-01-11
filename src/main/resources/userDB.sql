@@ -20,7 +20,7 @@ CREATE TABLE User (
                       Password varchar(255) NOT NULL,
                       FullName varchar(255),
                       Email varchar(255),
-                      Image varchar(255),
+                      Image_url varchar(255) DEFAULT 'http://147.83.7.203:8080/profileImages/bart.png',
                       Status BOOLEAN DEFAULT FALSE NOT NULL,
                       FOREIGN KEY (PlayerId) references Player(Id)
 );
