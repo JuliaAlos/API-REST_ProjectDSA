@@ -55,18 +55,8 @@ public class GameManagerDAOImpl implements GameManager{
         user.setId(oldUser.getId());
         user.setPlayerId(oldUser.getPlayerId());
 
-        //look for password change
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("userName", oldUsername);
-        hashMap.put("password", user.getPassword());
-        List<Object> l = session.findAll(User.class, hashMap);
-       // if(l.size()==1) {
-         //   session.update(user);
-          //  logger.info("Old password");
-       // }else {
-            session.updateNewPassword(user);
-            logger.info("New password");
-      //  }
+        session.updateNewPassword(user);
+
         logger.info("User updated");
         return user;
     }
