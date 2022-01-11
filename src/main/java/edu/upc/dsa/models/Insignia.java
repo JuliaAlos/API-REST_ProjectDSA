@@ -1,8 +1,8 @@
 package edu.upc.dsa.models;
 
 public class Insignia {
-    private String insigniaID;
-    private String date;
+    private String id;
+    private String data;
     private String name;
     private String playerId;
 
@@ -11,23 +11,32 @@ public class Insignia {
 
     public Insignia(String date, String name, String playerId) {
         this();
-        this.date = date;
+        this.data = date;
         this.name = name;
         this.playerId = playerId;
     }
 
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     /**********************************************************************
      **********************    Getters & Setters   ************************
      **********************************************************************/
 
-    public String getDate() {
-        return date;
+
+
+    public String getData() {
+        return data;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public String getName() {

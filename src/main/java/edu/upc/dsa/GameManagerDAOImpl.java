@@ -22,13 +22,6 @@ public class GameManagerDAOImpl implements GameManager{
     }
 
 
-    @Override
-    public User addUser(String userName, String password, String fullName, String email, String image_url) {
-        return null;
-    }
-
-
-
     public static GameManagerDAOImpl getInstance(){
         if(manager==null){
             logger.info("New instance edu.upc.dsa.GameManagerDAOImpl");

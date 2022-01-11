@@ -21,7 +21,7 @@ public class InsigniaTO {
         this();
         InsigniaModel insigniaModel = (InsigniaModel) SessionImpl.getInstance().findAll(InsigniaModel.class, new HashMap<String, Object>(){{put("name", insignia.getName());}}).get(0);
         Player p =(Player) SessionImpl.getInstance().get(Player.class, insignia.getPlayerId());
-        this.date = insignia.getDate();
+        this.date = insignia.getData();
         this.playerName = p.getPlayerName();
         this.name = insigniaModel.getName();
         this.type = insigniaModel.getType();
