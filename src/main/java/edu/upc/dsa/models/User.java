@@ -14,6 +14,7 @@ public class User {
     private String password;
     private String fullName;
     private String email;
+    private String image_url;
     private Boolean status;
     private String id;
     //one to one
@@ -26,12 +27,13 @@ public class User {
 
     public User() {}
 
-    public User(String id, String playerId, String userName, String password) {
+    public User(String id, String playerId, String userName, String password,String image_url) {
         this.userName = userName;
         this.password = password;
         this.id = id;
+        this.image_url=image_url;
         this.playerId = playerId;
-        this.status = false;
+        this.status = true;
         this.fullName=null;
         this.email=null;
     }
@@ -42,7 +44,8 @@ public class User {
         this.password=password;
         this.fullName=null;
         this.email=null;
-        this.status=false;
+        this.image_url=null;
+        this.status=true;
         this.playerId = playerId;
     }
 
@@ -67,7 +70,13 @@ public class User {
     }
 
 
+    public String getImage_url() {
+        return image_url;
+    }
 
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 
     public String getUserName() {
         return userName;

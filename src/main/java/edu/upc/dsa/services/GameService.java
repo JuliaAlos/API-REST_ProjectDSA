@@ -48,7 +48,7 @@ public class GameService {
         this.manager.addUser(newUser);
         this.managerPlanes.addPlaneToPlayer("Cessna",user.getUserName());
         this.managerInsignias.addInsigniaToPlayer("Welcome", user.getUserName());
-        UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer());
+        UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer(), newUser.getImage_url());
         return Response.status(201).entity(userTO).build();
     }
 

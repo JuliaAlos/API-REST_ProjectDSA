@@ -7,15 +7,17 @@ public class RegisterUserTO {
     private String password;
     private String fullName;
     private String email;
+    private String image_url;
 
     public RegisterUserTO() {}
 
-    public RegisterUserTO(String userName, String password, String fullName, String email) {
+    public RegisterUserTO(String userName, String password, String fullName, String email,String image_url) {
         this();
         this.userName=userName;
         this.password=password;
         this.fullName=fullName;
         this.email=email;
+        this.image_url=image_url;
     }
 
     public User toUser(){
@@ -24,7 +26,8 @@ public class RegisterUserTO {
         u.setPassword(this.password);
         u.setFullName(this.fullName);
         u.setEmail(this.email);
-        u.setStatus(false);
+        u.setStatus(true);
+        u.setImage_url(this.image_url);
         return u;
     }
 

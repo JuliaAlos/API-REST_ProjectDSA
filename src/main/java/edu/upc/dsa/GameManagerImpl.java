@@ -44,9 +44,9 @@ public class GameManagerImpl implements GameManager{
     }
 
     @Override
-    public User addUser(String userName, String password, String fullName, String email) {
-        //return this.addUser(new User(userName,password,fullName,email));
-        return null;
+    public User addUser(String userName, String password, String fullName, String email, String image_url) {
+        return this.addUser(new User(userName,password,fullName,email,image_url));
+        //return null;
     }
 
     @Override

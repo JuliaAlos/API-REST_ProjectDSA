@@ -29,7 +29,7 @@ public class GameManagerDAOTest {
         Random r = new Random();
         Integer rand = r.nextInt(100-0)+0;
 
-        RegisterUserTO registerUserTO = new RegisterUserTO("P"+ rand.toString(), "Pau", "P fullname", "pau@pau.pau");
+        RegisterUserTO registerUserTO = new RegisterUserTO("P"+ rand.toString(), "Pau", "P fullname", "pau@pau.pau","");
         User u = gameManagerDAO.addUser(registerUserTO.toUser());
 
     }
@@ -56,7 +56,7 @@ public class GameManagerDAOTest {
     @Test
     public void testDeleteUser(){
         GameManagerDAOImpl gameManagerDAO = GameManagerDAOImpl.getInstance();
-        RegisterUserTO registerUserTO = new RegisterUserTO("toBeRemoved", "Pau", "P fullname", "pau@pau.pau");
+        RegisterUserTO registerUserTO = new RegisterUserTO("toBeRemoved", "Pau", "P fullname", "pau@pau.pau","");
         User u = gameManagerDAO.addUser(registerUserTO.toUser());
         gameManagerDAO.deleteUser("toBeRemoved");
 
