@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 import java.util.LinkedList;
 import java.util.List;
 
-@Api(value = "/planes", description = "Endpoint to the Planes Service")
+@Api(value = "/forum", description = "Endpoint to the Forum Service")
 @Path("/forum")
 public class ForumService {
 
