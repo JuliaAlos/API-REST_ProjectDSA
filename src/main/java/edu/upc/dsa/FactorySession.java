@@ -12,8 +12,8 @@ public class FactorySession {
     public static Connection getConnection() {
         Connection conn = null;
         Properties properties = new Properties();
-        properties.setProperty("user", "root");
-        properties.setProperty("password", "Mazinger72");
+        properties.setProperty("user", "game");
+        properties.setProperty("password", "");
         try {
             conn =
                     DriverManager.getConnection("jdbc:mariadb://localhost:3306/insignia", properties);

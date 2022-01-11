@@ -49,6 +49,29 @@ public class GameManagerDAOImpl implements GameManager{
     }
 
     @Override
+    public User updateUser(User user, String oldUsername) {
+        logger.info("Update user " +oldUsername+" -> "+ user);
+        User oldUser = (User) session.getByUsername(User.class, oldUsername);
+        user.setId(oldUser.getId());
+        user.setPlayerId(oldUser.getPlayerId());
+
+        //look for password change
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userName", oldUsername);
+        hashMap.put("password", user.getPassword());
+        List<Object> l = session.findAll(User.class, hashMap);
+       // if(l.size()==1) {
+         //   session.update(user);
+          //  logger.info("Old password");
+       // }else {
+            session.updateNewPassword(user);
+            logger.info("New password");
+      //  }
+        logger.info("User updated");
+        return user;
+    }
+
+    @Override
     public User loginUser(String userName,String password){
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("userName", userName);

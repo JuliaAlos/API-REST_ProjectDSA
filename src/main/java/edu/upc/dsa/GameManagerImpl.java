@@ -33,6 +33,11 @@ public class GameManagerImpl implements GameManager{
         return manager;
     }
 
+    @Override
+    public User updateUser(User user, String oldUsername) {
+        return null;
+    }
+
     public static void delete(){
         manager = null;
         logger.info("Instance GameManagerImpl deleted");

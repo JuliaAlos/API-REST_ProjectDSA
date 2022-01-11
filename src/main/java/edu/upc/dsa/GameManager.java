@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface GameManager {
     User addUser(User user);
+    User updateUser(User user, String oldUsername);
     User loginUser(String userName,String password);
     void deleteUser(String userName);
     void logoutUser(String userName);

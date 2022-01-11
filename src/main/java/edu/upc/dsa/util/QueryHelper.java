@@ -78,16 +78,31 @@ public class QueryHelper {
         return sb.toString();
     }
 
+    public static String createQueryUPDATE_encryptPassword(Object entity) {
+        StringBuffer sb = new StringBuffer();
+        sb.append("UPDATE ").append(entity.getClass().getSimpleName()).append(" SET ");
+        String[] fields = ObjectHelper.getAllFieldsButId(entity);
+
+        for (String field : fields){
+            if(field.equals("password") ){
+                sb.append(field).append(" = ").append("MD5(?)").append(",");
+            }else{
+                sb.append(field).append(" = ").append("?").append(",");
+            }
+        }
+
+        sb.deleteCharAt(sb.length()-1);
+        sb.append(" WHERE id = ?");
+        return sb.toString();
+    }
+
     public static String createQueryUPDATE(Object entity) {
         StringBuffer sb = new StringBuffer();
         sb.append("UPDATE ").append(entity.getClass().getSimpleName()).append(" SET ");
         String[] fields = ObjectHelper.getAllFieldsButId(entity);
 
         for (String field : fields){
-//            if(field.equals("password")){
-//                sb.append(field).append(" = ").append("MD5(?)").append(",");
-                sb.append(field).append(" = ").append("?").append(",");
-//            }
+            sb.append(field).append(" = ").append("?").append(",");
         }
 
         sb.deleteCharAt(sb.length()-1);

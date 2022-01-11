@@ -1,5 +1,6 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.models.User;
 import edu.upc.dsa.util.ObjectHelper;
 import edu.upc.dsa.util.QueryHelper;
 import org.apache.log4j.Logger;
@@ -156,6 +157,25 @@ public class SessionImpl implements Session {
 
     }
 
+    public void updateNewPassword(Object object) {
+        String query = QueryHelper.createQueryUPDATE_encryptPassword(object);
+
+        PreparedStatement pstm = null;
+        try {
+            pstm = conn.prepareStatement(query);
+
+            int i = 1;
+            for (String field : ObjectHelper.getAllFieldsButId(object)) {
+                pstm.setObject(i++, ObjectHelper.getter(object, field));
+            }
+            pstm.setObject(i++, ObjectHelper.getter(object, "id"));
+
+            pstm.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void delete(Object object) {
         String query = QueryHelper.createQueryDELETE(object);
         PreparedStatement pstm = null;
@@ -288,4 +308,6 @@ public class SessionImpl implements Session {
             return null;
         }
     }
+
+
 }

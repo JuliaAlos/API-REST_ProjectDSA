@@ -53,6 +53,25 @@ public class GameService {
         return Response.status(201).entity(userTO).build();
     }
 
+    @POST
+    @ApiOperation(value = "Update existing user", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Create",response=UserTO.class),
+            @ApiResponse(code = 404, message = "User not registered")
+
+    })
+
+    @Path("/update/{userName}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateUser(RegisterUserTO user, @PathParam("userName") String userName) {
+        if (!manager.existUser(userName))  return Response.status(404).build();
+        User newUser = user.toUser();
+        this.manager.updateUser(newUser, userName);
+
+        UserTO userTO = new UserTO(newUser);
+        return Response.status(201).entity(userTO).build();
+    }
+
 
     @POST
     @ApiOperation(value = "Login user", notes = "asdasd")
@@ -165,6 +184,10 @@ public class GameService {
             return Response.status(200).entity(entity).build();
         return Response.status(404).entity(entity).build();
     }
+
+
+
+
 }
 
 

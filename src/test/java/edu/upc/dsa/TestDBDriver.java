@@ -5,6 +5,9 @@ import edu.upc.dsa.models.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.Instant;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
