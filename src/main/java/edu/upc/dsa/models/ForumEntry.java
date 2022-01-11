@@ -8,8 +8,7 @@ public class ForumEntry {
 
     public ForumEntry(){}
 
-    public ForumEntry(String id, String userName, String message) {
-        this.id = id;
+    public ForumEntry(String userName, String message) {
         this.userName = userName;
         this.message = message;
     }
