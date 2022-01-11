@@ -44,10 +44,11 @@ public class GameService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUser(RegisterUserTO user) {
         if (manager.existUser(user.getUserName()))  return Response.status(409).build();
-        User newUser = user.toUser();
-        this.manager.addUser(newUser);
+        //User newUser = user.toUser();
+        this.manager.addUser(user.getUserName(), user.getPassword(), user.getFullName(), user.getEmail(), user.getImage_url());
         this.managerPlanes.addPlaneToPlayer("Cessna",user.getUserName());
         this.managerInsignias.addInsigniaToPlayer("Welcome", user.getUserName());
+        User newUser = this.manager.getUser(user.getUserName());
         UserTO userTO = new UserTO(newUser.getUserName(), newUser.getFullName(), newUser.getEmail(),newUser.getStatus(), newUser.getPlayer(), newUser.getImage_url());
         return Response.status(201).entity(userTO).build();
     }

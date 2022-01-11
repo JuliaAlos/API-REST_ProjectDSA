@@ -61,7 +61,6 @@ public class GameManagerDAOImpl implements GameManager{
         if(l.size()==1){
             logger.info("Correct login "+userName);
 
-          //  gameUsers.get(userName).setStatus(true);
             User u = (User) l.get(0);
             u.setStatus(true);
             session.update(u);

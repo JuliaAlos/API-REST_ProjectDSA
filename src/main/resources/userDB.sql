@@ -20,6 +20,7 @@ CREATE TABLE User (
                       Password varchar(255) NOT NULL,
                       FullName varchar(255),
                       Email varchar(255),
+                      Image varchar(255),
                       Status BOOLEAN DEFAULT FALSE NOT NULL,
                       FOREIGN KEY (PlayerId) references Player(Id)
 );
