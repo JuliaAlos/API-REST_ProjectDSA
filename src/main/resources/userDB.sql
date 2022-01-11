@@ -72,6 +72,7 @@ CREATE TABLE Upgrade (
 CREATE TABLE ForumEntry (
                           Id varchar(255) PRIMARY KEY,
                           UserName varchar(255) NOT NULL,
+                          NumSeq integer NOT NULL,
                           Message varchar(255) NOT NULL
 );
 

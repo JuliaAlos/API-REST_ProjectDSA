@@ -5,7 +5,7 @@ public class ForumEntry {
     String id;
     String userName;
     String message;
-
+    Integer numSeq;
     public ForumEntry(){}
 
     public ForumEntry(String userName, String message) {
@@ -35,5 +35,13 @@ public class ForumEntry {
 
     public String getMessage() {
         return message;
+    }
+
+    public void setNumSeq(Integer numSeq) {
+        this.numSeq = numSeq;
+    }
+
+    public Integer getNumSeq() {
+        return numSeq;
     }
 }
