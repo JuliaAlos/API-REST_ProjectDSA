@@ -21,10 +21,13 @@ public class GameManagerDAOImpl implements GameManager{
         session  = SessionImpl.getInstance();
     }
 
+
     @Override
     public User addUser(String userName, String password, String fullName, String email, String image_url) {
         return null;
     }
+
+
 
     public static GameManagerDAOImpl getInstance(){
         if(manager==null){
