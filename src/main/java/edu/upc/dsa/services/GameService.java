@@ -189,7 +189,7 @@ public class GameService {
     @GET
     @ApiOperation(value = "Get all users sorted by achieved distance", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class, responseContainer="List"),
             @ApiResponse(code = 404, message= "Not found (no users registered)")
     })
     @Path("/getByDistance")
@@ -197,11 +197,13 @@ public class GameService {
     public Response getByDistance(){
 
         List<User> userList = this.manager.sortByDistance();
-        List<UserTO> userTOList = new LinkedList<UserTO>();
+        List<RankingTO> userTOList = new LinkedList<RankingTO>();
+        Integer pos = 1;
         for(User user:userList){
-            userTOList.add(new UserTO(user));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getMaxDistance().toString()));
+            pos++;
         }
-        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+        GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
 
         if(userTOList.size() > 0)
             return Response.status(200).entity(entity).build();
@@ -211,7 +213,7 @@ public class GameService {
     @GET
     @ApiOperation(value = "Get all users sorted by time played", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class, responseContainer="List"),
             @ApiResponse(code = 404, message= "Not found (no users registered)")
     })
     @Path("/getByTime")
@@ -219,11 +221,13 @@ public class GameService {
     public Response getByTime(){
 
         List<User> userList = this.manager.sortByTime();
-        List<UserTO> userTOList = new LinkedList<UserTO>();
+        List<RankingTO> userTOList = new LinkedList<RankingTO>();
+        Integer pos=1;
         for(User user:userList){
-            userTOList.add(new UserTO(user));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getTimeOfFlight().toString()));
+            pos++;
         }
-        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+        GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
 
         if(userTOList.size() > 0)
             return Response.status(200).entity(entity).build();
@@ -233,7 +237,7 @@ public class GameService {
     @GET
     @ApiOperation(value = "Get all users sorted by money", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class, responseContainer="List"),
             @ApiResponse(code = 404, message= "Not found (no users registered)")
     })
     @Path("/getByMoney")
@@ -241,11 +245,13 @@ public class GameService {
     public Response getByMoney(){
 
         List<User> userList = this.manager.sortByMoney();
-        List<UserTO> userTOList = new LinkedList<UserTO>();
+        List<RankingTO> userTOList = new LinkedList<RankingTO>();
+        Integer pos =1;
         for(User user:userList){
-            userTOList.add(new UserTO(user));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getBitcoins().toString()));
+            pos++;
         }
-        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+        GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
 
         if(userTOList.size() > 0)
             return Response.status(200).entity(entity).build();
@@ -255,23 +261,114 @@ public class GameService {
     @GET
     @ApiOperation(value = "Get all users sorted by their rol", notes = "asdasd")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
-            @ApiResponse(code = 404, message= "Not found (no users registered)")
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class, responseContainer="List"),
+            @ApiResponse(code = 404, message= "Not found")
     })
     @Path("/getByRol")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getByRol(){
 
         List<User> userList = this.manager.sortByRol();
-        List<UserTO> userTOList = new LinkedList<UserTO>();
+        List<RankingTO> userTOList = new LinkedList<RankingTO>();
+        Integer pos=1;
         for(User user:userList){
-            userTOList.add(new UserTO(user));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getRol()));
+            pos++;
         }
-        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+        GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
 
         if(userTOList.size() > 0)
             return Response.status(200).entity(entity).build();
         return Response.status(404).entity(entity).build();
+    }
+
+
+    @GET
+    @ApiOperation(value = "Get position user sorted by achieved distance", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class),
+            @ApiResponse(code = 404, message= "Not found")
+    })
+    @Path("/getByDistance/{userName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getDistance(@PathParam("userName") String userName){
+
+        List<User> userList = this.manager.sortByDistance();
+        Integer pos=1;
+        for(User user:userList){
+            if(user.getUserName().equals(userName)){
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getMaxDistance().toString());
+                return Response.status(200).entity(response).build();
+            }
+            pos++;
+        }
+        return Response.status(404).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get position user sorted by time played", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class),
+            @ApiResponse(code = 404, message= "Not found")
+    })
+    @Path("/getByTime/{userName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTime(@PathParam("userName") String userName){
+
+        List<User> userList = this.manager.sortByTime();
+        Integer pos=1;
+        for(User user:userList){
+            if(user.getUserName().equals(userName)){
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getTimeOfFlight().toString());
+                return Response.status(200).entity(response).build();
+            }
+            pos++;
+        }
+        return Response.status(404).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get position user sorted by money", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class),
+            @ApiResponse(code = 404, message= "Not found")
+    })
+    @Path("/getByMoney/{userName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getMoney(@PathParam("userName") String userName){
+
+        List<User> userList = this.manager.sortByMoney();
+        Integer pos=1;
+        for(User user:userList){
+            if(user.getUserName().equals(userName)){
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getBitcoins().toString());
+                return Response.status(200).entity(response).build();
+            }
+            pos++;
+        }
+        return Response.status(404).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get position user sorted by their rol", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = RankingTO.class),
+            @ApiResponse(code = 404, message= "Not found (no users registered)")
+    })
+    @Path("/getByRol/{userName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getRol(@PathParam("userName") String userName){
+
+        List<User> userList = this.manager.sortByRol();
+        Integer pos=1;
+        for(User user:userList){
+            if(user.getUserName().equals(userName)){
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getRol());
+                return Response.status(200).entity(response).build();
+            }
+            pos++;
+        }
+        return Response.status(404).build();
     }
 
 
