@@ -5,15 +5,25 @@ public class RankingTO {
     private String image_url;
     private String pos;
     private String score;
+    private String rol;
 
     public RankingTO(){}
 
-    public RankingTO(String userName, String pos, String score,String image_url){
+    public RankingTO(String userName, String pos, String score,String image_url,String rol){
         this();
         this.userName=userName;
         this.pos=pos;
         this.score=score;
         this.image_url=image_url;
+        this.rol=rol;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     public String getUserName() {
