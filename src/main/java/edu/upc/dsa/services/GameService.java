@@ -200,7 +200,7 @@ public class GameService {
         List<RankingTO> userTOList = new LinkedList<RankingTO>();
         Integer pos = 1;
         for(User user:userList){
-            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getMaxDistance().toString()));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getMaxDistance().toString(),user.getImage_url()));
             pos++;
         }
         GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
@@ -224,7 +224,7 @@ public class GameService {
         List<RankingTO> userTOList = new LinkedList<RankingTO>();
         Integer pos=1;
         for(User user:userList){
-            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getTimeOfFlight().toString()));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getTimeOfFlight().toString(),user.getImage_url()));
             pos++;
         }
         GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
@@ -248,7 +248,7 @@ public class GameService {
         List<RankingTO> userTOList = new LinkedList<RankingTO>();
         Integer pos =1;
         for(User user:userList){
-            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getBitcoins().toString()));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getBitcoins().toString(),user.getImage_url()));
             pos++;
         }
         GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
@@ -272,7 +272,7 @@ public class GameService {
         List<RankingTO> userTOList = new LinkedList<RankingTO>();
         Integer pos=1;
         for(User user:userList){
-            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getRol()));
+            userTOList.add(new RankingTO(user.getUserName(),pos.toString(),user.getPlayer().getRol(),user.getImage_url()));
             pos++;
         }
         GenericEntity<List<RankingTO>> entity = new GenericEntity<List<RankingTO>>(userTOList) {};
@@ -297,7 +297,7 @@ public class GameService {
         Integer pos=1;
         for(User user:userList){
             if(user.getUserName().equals(userName)){
-                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getMaxDistance().toString());
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getMaxDistance().toString(),user.getImage_url());
                 return Response.status(200).entity(response).build();
             }
             pos++;
@@ -319,7 +319,7 @@ public class GameService {
         Integer pos=1;
         for(User user:userList){
             if(user.getUserName().equals(userName)){
-                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getTimeOfFlight().toString());
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getTimeOfFlight().toString(),user.getImage_url());
                 return Response.status(200).entity(response).build();
             }
             pos++;
@@ -341,7 +341,7 @@ public class GameService {
         Integer pos=1;
         for(User user:userList){
             if(user.getUserName().equals(userName)){
-                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getBitcoins().toString());
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getBitcoins().toString(),user.getImage_url());
                 return Response.status(200).entity(response).build();
             }
             pos++;
@@ -363,7 +363,7 @@ public class GameService {
         Integer pos=1;
         for(User user:userList){
             if(user.getUserName().equals(userName)){
-                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getRol());
+                RankingTO response = new RankingTO(userName,pos.toString(),user.getPlayer().getRol(),user.getImage_url());
                 return Response.status(200).entity(response).build();
             }
             pos++;
