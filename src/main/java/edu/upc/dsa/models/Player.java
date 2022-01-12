@@ -3,12 +3,9 @@ package edu.upc.dsa.models;
 import edu.upc.dsa.SessionImpl;
 
 import javax.ws.rs.core.Link;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class Player {
+public class Player implements Comparable<Player> {
     private String id;
     private String playerName;
     private Integer maxDistance;
@@ -109,5 +106,21 @@ public class Player {
         this.bitcoins = bitcoins;
     }
 
+    @Override
+    public int compareTo(Player o) {
+        List<String> hierarchy = new ArrayList<String>(){{
+            add("Cadet");
+            add("Second Officer");
+            add("First Officer");
+            add("Senior First Officer");
+            add("Captain");
+            add("Training Captain");
+        }};
+
+
+
+
+        return 0;
+    }
 }
 

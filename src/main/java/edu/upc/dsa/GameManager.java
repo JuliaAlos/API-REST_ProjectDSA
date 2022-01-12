@@ -19,6 +19,14 @@ public interface GameManager {
     List<User> getAllActive();
     Boolean existUser(String userName);
 
+    List<User> sortByDistance();
+
+    List<User> sortByTime();
+
+    List<User> sortByMoney();
+
+    List<User> sortByRol();
+
     //public User updateUser(User user);
 
 

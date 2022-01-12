@@ -134,98 +134,24 @@ public class GameManagerImpl implements GameManager{
         logger.info(userName+" not found");
         return false;
     }
-/*
+
     @Override
-    public List<Plane> getAllPlanes() {
-        logger.info("Get all planes in the system.");
-        return new ArrayList<Plane>(this.gamePlanes.values());
+    public List<User> sortByDistance() {
+        return null;
     }
 
     @Override
-    public List<Insignia> getAllInsignias() {
-        logger.info("Get all insignias in the system.");
-        return new ArrayList<Insignia>(this.gameInsignias.values());
+    public List<User> sortByTime() {
+        return null;
     }
 
     @Override
-    public void addPlane(Plane plane) {
-        logger.info("Adding a new plane to the system.");
-        this.gamePlanes.put(plane.getModel(), plane);
-        logger.info("Plane "+ plane.getModel() + " added successfully to the system.");
+    public List<User> sortByMoney() {
+        return null;
     }
 
     @Override
-    public void addInsignia(Insignia insignia) {
-        logger.info("Adding a new insignia to the system.");
-        this.gameInsignias.put(insignia.getName(), insignia);
-        logger.info("Insignia " + insignia.getName() + "addes successfully to the system.");
+    public List<User> sortByRol() {
+        return null;
     }
-
-    @Override
-    public Plane getPlaneByModel(String model) {
-        logger.info("Get plane which model is: ." + model);
-        return this.gamePlanes.get(model);
-    }
-
-    @Override
-    public Insignia getInsigniaByName(String nameInsignia) {
-        return this.gameInsignias.get(nameInsignia);
-    }
-
-    @Override
-    public void addPlaneToUser (String username, String planeModel) {
-        logger.info("Add a new plane to the user.");
-        User user = this.gameUsers.get(username);
-        Plane plane = this.gamePlanes.get(planeModel);
-        user.getPlayer().addPlane(plane);
-        logger.info("Plane " + planeModel + " added successfully to player " + username);
-    }
-
-    @Override
-    public void addInsigniaToUser (String username, String insigniaName) {
-        logger.info("Add a new insignia to the user.");
-        User user = this.gameUsers.get(username);
-        Insignia insignia = this.gameInsignias.get(insigniaName);
-        user.getPlayer().addInsignia(insignia);
-        logger.info("Insignia " + insigniaName+ " added successfully to player " + username);
-    }
-
-    @Override
-    public List<Plane> getListPlanesUser (String username){
-        logger.info("Get list of planes of the user " + username);
-        return this.gameUsers.get(username).getPlayer().getListPlanes();
-    }
-
-    @Override
-    public List<Insignia> getListInsigniasUser(String username) {
-        logger.info("Get list of insignias of the user " + username);
-        return this.gameUsers.get(username).getPlayer().getListInsignias();
-    }
-
-<<<<<<< HEAD
-
-
-    @Override
-    public Boolean existPlane (String planeModel){
-        if(this.gamePlanes.containsKey(planeModel)){
-            logger.info(planeModel+" found");
-            return true;
-        }
-        logger.info(planeModel+" not found");
-        return false;
-    }
-
-    @Override
-    public Boolean existInsignia (String insigniaName){
-        if(this.gamePlanes.containsKey(insigniaName)){
-            logger.info(insigniaName+" found");
-            return true;
-        }
-        logger.info(insigniaName+" not found");
-        return false;
-    }
-
- */
-
-
 }

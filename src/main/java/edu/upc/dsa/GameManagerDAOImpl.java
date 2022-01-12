@@ -162,5 +162,56 @@ public class GameManagerDAOImpl implements GameManager{
         return false;
     }
 
+    @Override
+    public List<User> sortByDistance() {
 
+        logger.info("Sort users by distance");
+        List<User> userList = new LinkedList<>();
+
+        session.findAll(User.class).forEach(user -> {
+            userList.add((User) user);
+        });
+
+        userList.sort((s1, s2) -> s2.getPlayer().getMaxDistance().compareTo(s1.getPlayer().getMaxDistance()));
+        return userList;
+    }
+
+    @Override
+    public List<User> sortByTime() {
+        logger.info("Sort users by time");
+        List<User> userList = new LinkedList<>();
+
+        session.findAll(User.class).forEach(user -> {
+            userList.add((User) user);
+        });
+
+        userList.sort((s1, s2) -> s2.getPlayer().getTimeOfFlight().compareTo(s1.getPlayer().getTimeOfFlight()));
+        return userList;
+    }
+
+    @Override
+    public List<User> sortByMoney() {
+        logger.info("Sort users by money");
+        List<User> userList = new LinkedList<>();
+
+        session.findAll(User.class).forEach(user -> {
+            userList.add((User) user);
+        });
+
+        userList.sort((s1, s2) -> s2.getPlayer().getBitcoins().compareTo(s1.getPlayer().getBitcoins()));
+        return userList;
+    }
+
+    @Override
+    public List<User> sortByRol() {
+        logger.info("Sort users by rol");
+        List<User> userList = new LinkedList<>();
+
+        session.findAll(User.class).forEach(user -> {
+            userList.add((User) user);
+        });
+
+        userList.sort((s1, s2) -> s2.getPlayer().getBitcoins().compareTo(s1.getPlayer().getBitcoins()));
+        return userList;
+    }
 }

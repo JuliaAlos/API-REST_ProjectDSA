@@ -186,6 +186,93 @@ public class GameService {
     }
 
 
+    @GET
+    @ApiOperation(value = "Get all users sorted by achieved distance", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 404, message= "Not found (no users registered)")
+    })
+    @Path("/getByDistance")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByDistance(){
+
+        List<User> userList = this.manager.sortByDistance();
+        List<UserTO> userTOList = new LinkedList<UserTO>();
+        for(User user:userList){
+            userTOList.add(new UserTO(user));
+        }
+        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+
+        if(userTOList.size() > 0)
+            return Response.status(200).entity(entity).build();
+        return Response.status(404).entity(entity).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get all users sorted by time played", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 404, message= "Not found (no users registered)")
+    })
+    @Path("/getByTime")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByTime(){
+
+        List<User> userList = this.manager.sortByTime();
+        List<UserTO> userTOList = new LinkedList<UserTO>();
+        for(User user:userList){
+            userTOList.add(new UserTO(user));
+        }
+        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+
+        if(userTOList.size() > 0)
+            return Response.status(200).entity(entity).build();
+        return Response.status(404).entity(entity).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get all users sorted by money", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 404, message= "Not found (no users registered)")
+    })
+    @Path("/getByMoney")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByMoney(){
+
+        List<User> userList = this.manager.sortByMoney();
+        List<UserTO> userTOList = new LinkedList<UserTO>();
+        for(User user:userList){
+            userTOList.add(new UserTO(user));
+        }
+        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+
+        if(userTOList.size() > 0)
+            return Response.status(200).entity(entity).build();
+        return Response.status(404).entity(entity).build();
+    }
+
+    @GET
+    @ApiOperation(value = "Get all users sorted by their rol", notes = "asdasd")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserTO.class, responseContainer="List"),
+            @ApiResponse(code = 404, message= "Not found (no users registered)")
+    })
+    @Path("/getByRol")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getByRol(){
+
+        List<User> userList = this.manager.sortByRol();
+        List<UserTO> userTOList = new LinkedList<UserTO>();
+        for(User user:userList){
+            userTOList.add(new UserTO(user));
+        }
+        GenericEntity<List<UserTO>> entity = new GenericEntity<List<UserTO>>(userTOList) {};
+
+        if(userTOList.size() > 0)
+            return Response.status(200).entity(entity).build();
+        return Response.status(404).entity(entity).build();
+    }
 
 
 }
