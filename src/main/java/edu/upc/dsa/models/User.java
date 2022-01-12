@@ -4,12 +4,9 @@ import edu.upc.dsa.SessionImpl;
 import edu.upc.dsa.util.QueryHelper;
 import edu.upc.dsa.util.RandomUtils;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-public class User {
+public class User implements Comparable<User>{
     private String userName;
     private String password;
     private String fullName;
@@ -118,6 +115,18 @@ public class User {
         this.status = status;
     }
 
+    @Override
+    public int compareTo(User o) {
+        List<String> hierarchy = new ArrayList<String>(){{
+            add("Cadet");
+            add("Second Officer");
+            add("First Officer");
+            add("Senior First Officer");
+            add("Captain");
+            add("Training Captain");
+        }};
 
+        return Integer.compare(hierarchy.indexOf(o.getPlayer().getRol()), hierarchy.indexOf(this.getPlayer().getRol()));
+    }
 
 }

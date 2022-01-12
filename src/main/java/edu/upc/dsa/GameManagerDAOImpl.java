@@ -4,10 +4,7 @@ import edu.upc.dsa.models.Player;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class GameManagerDAOImpl implements GameManager{
 
@@ -211,7 +208,7 @@ public class GameManagerDAOImpl implements GameManager{
             userList.add((User) user);
         });
 
-        userList.sort((s1, s2) -> s2.getPlayer().getBitcoins().compareTo(s1.getPlayer().getBitcoins()));
+        Collections.sort(userList);
         return userList;
     }
 }

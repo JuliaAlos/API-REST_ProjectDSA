@@ -5,7 +5,7 @@ import edu.upc.dsa.SessionImpl;
 import javax.ws.rs.core.Link;
 import java.util.*;
 
-public class Player implements Comparable<Player> {
+public class Player {
     private String id;
     private String playerName;
     private Integer maxDistance;
@@ -18,7 +18,7 @@ public class Player implements Comparable<Player> {
         this();
         this.playerName=playerName;
         this.maxDistance=0;
-        this.rol = "ROOKIE";
+        this.rol = "Cadet";
         this.timeOfFlight=0;
         this.bitcoins=0;
     }
@@ -106,21 +106,5 @@ public class Player implements Comparable<Player> {
         this.bitcoins = bitcoins;
     }
 
-    @Override
-    public int compareTo(Player o) {
-        List<String> hierarchy = new ArrayList<String>(){{
-            add("Cadet");
-            add("Second Officer");
-            add("First Officer");
-            add("Senior First Officer");
-            add("Captain");
-            add("Training Captain");
-        }};
-
-
-
-
-        return 0;
-    }
 }
 

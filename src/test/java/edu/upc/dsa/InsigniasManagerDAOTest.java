@@ -7,6 +7,6 @@ public class InsigniasManagerDAOTest {
     public void addInsigniaToPlayer(){
         InsigniasManager insigniasManager = InsigniasManagerDAOImpl.getInstance();
 
-        insigniasManager.addInsigniaToPlayer("Insignia 1","pau player");
+        insigniasManager.addInsigniaToPlayer("Zombie","Pau");
     }
 }

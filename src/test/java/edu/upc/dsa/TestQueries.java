@@ -16,7 +16,7 @@ public class TestQueries {
 
     @Test
     public void testInsert(){
-        User u = new User("4505770b-599e-11ec-ad3a-b0359fb64d3d", "Pau2", "79fe6d5e658a2b2302aacd146c7bfb62");
-        Assert.assertEquals("INSERT INTO User (userName, password, fullName, email, status, id, playerId) VALUES (?, ?, ?, ?, ?, ?, ?)", QueryHelper.createQueryINSERT(u));
+        User u = new User("IdPau", "Pau2", "79fe6d5e658a2b2302aacd146c7bfb62");
+        Assert.assertEquals("INSERT INTO User (userName, password, fullName, email, image_url, status, id, playerId) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", QueryHelper.createQueryINSERT(u));
     }
 }
