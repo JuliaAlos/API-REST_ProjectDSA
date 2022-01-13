@@ -1,6 +1,7 @@
 package edu.upc.dsa;
 
 
+import edu.upc.dsa.models.GameResults;
 import edu.upc.dsa.models.Plane;
 import edu.upc.dsa.models.Insignia;
 import edu.upc.dsa.models.User;
@@ -26,6 +27,10 @@ public interface GameManager {
     List<User> sortByMoney();
 
     List<User> sortByRol();
+
+    void syncGameResults(GameResults gameResults, String userName);
+
+    void setMoney(Integer bitcoins, String userName);
 
     //public User updateUser(User user);
 

@@ -1,5 +1,6 @@
 package edu.upc.dsa;
 
+import edu.upc.dsa.models.GameResults;
 import edu.upc.dsa.models.Player;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
@@ -210,5 +211,29 @@ public class GameManagerDAOImpl implements GameManager{
 
         Collections.sort(userList);
         return userList;
+    }
+
+    @Override
+    public void syncGameResults(GameResults gameResults, String userName) {
+        logger.info("Sync new game results");
+        User user = (User) session.getByUsername(User.class,userName);
+        Player player = user.getPlayer();
+
+        player.setBitcoins(player.getBitcoins() + gameResults.getCollectedBitcoins());
+        player.setTimeOfFlight(player.getTimeOfFlight() + gameResults.getTimeOfFlight());
+        if(player.getMaxDistance() < gameResults.getDistance()) player.setMaxDistance(gameResults.getDistance());
+
+        session.update(player);
+
+    }
+
+    @Override
+    public void setMoney(Integer bitcoins, String userName) {
+        logger.info("Set money");
+        User user = (User) session.getByUsername(User.class,userName);
+        Player player = user.getPlayer();
+        player.setBitcoins(bitcoins);
+
+        session.update(player);
     }
 }

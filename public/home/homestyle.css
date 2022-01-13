@@ -1,3 +1,5 @@
+
+
 *{
   margin: 0;
   padding: 0;
@@ -92,7 +94,12 @@ html{
   margin-right: 8px;
   font-size: 16px;
 }
+
+.tableStyle {
+  margin: auto;
+  width: 75%;
 }
+
 @media screen and (max-width:700px) {
   .menu-toggle-btn{
     display: block !important;
