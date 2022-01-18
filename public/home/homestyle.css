@@ -95,11 +95,6 @@ html{
   font-size: 16px;
 }
 
-.tableStyle {
-  margin: auto;
-  width: 75%;
-}
-
 @media screen and (max-width:700px) {
   .menu-toggle-btn{
     display: block !important;
@@ -588,7 +583,7 @@ footer{
   .sticky .navbar-menu{
     background-color: #f1f1f1;
   }
-  
+
   .navbar-menu.active{
     right: 0;
   }
@@ -635,3 +630,7 @@ footer{
 
 }
 
+.tableStyle {
+  margin: auto;
+  width: 75%;
+}
