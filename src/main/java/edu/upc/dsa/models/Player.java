@@ -10,7 +10,7 @@ public class Player {
     private String playerName;
     private Integer maxDistance;
     private String rol;
-    private Integer timeOfFlight;
+    private Float timeOfFlight;
     private Integer bitcoins;
 
     public Player(){}
@@ -19,11 +19,11 @@ public class Player {
         this.playerName=playerName;
         this.maxDistance=0;
         this.rol = "Cadet";
-        this.timeOfFlight=0;
+        this.timeOfFlight=0f;
         this.bitcoins=0;
     }
 
-    public Player(String id, String playerName, Integer maxDistance, String rol, Integer timeOfFlight, Integer bitcoins){
+    public Player(String id, String playerName, Integer maxDistance, String rol, Float timeOfFlight, Integer bitcoins){
         this();
         this.id = id;
         this.playerName=playerName;
@@ -90,11 +90,11 @@ public class Player {
         this.rol = rol;
     }
 
-    public Integer getTimeOfFlight() {
+    public Float getTimeOfFlight() {
         return timeOfFlight;
     }
 
-    public void setTimeOfFlight(Integer timeOfFlight) {
+    public void setTimeOfFlight(Float timeOfFlight) {
         this.timeOfFlight = timeOfFlight;
     }
 
