@@ -95,13 +95,17 @@ INSERT INTO InsigniaModel(Name, Type) VALUES ('Welcome', '1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Diamond', '2');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('First_purchase', '3');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Zombie', '4');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Scorched', '5');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('5min', '5');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('1hour', '6');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('24/7playing', '7');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Centimetre', '8');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('World', '9');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Wealth', '10');
 
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('1', 'Welcome',  '1/2/2021' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('2', 'Welcome',  '1/3/2021' , (SELECT id from Player WHERE PlayerName = 'Pau'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('3', 'Welcome',  '1/1/2021' , (SELECT id from Player WHERE PlayerName = 'Julia'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('4', 'Welcome',  '1/4/2021' , (SELECT id from Player WHERE PlayerName = 'Arnau'));
-INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('5', 'Scorched',  '1/5/2021' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 
 INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Airbus', 60, 40, 60, 100, 70, 90, 40, 60, 100, 80);
 INSERT INTO PlaneModel(Model, Fuel, MinFuel, EnginesLife, MaxEnginesLife, VelX, MaxSpeed, VelY, MaxManoeuvrability, Gravity, MinWeight) VALUES ('Fighter', 80, 50, 20, 50, 90, 100, 60, 90, 50, 40);

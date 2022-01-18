@@ -17,7 +17,7 @@ a:hover {
 }
 
 .section-products .header {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .section-products .header h3 {
@@ -32,8 +32,10 @@ a:hover {
     color: #444444; 
 }
 
+
 .section-products .single-product {
     margin-bottom: 26px;
+
 }
 
 .section-products .single-product .part-1 {
@@ -50,7 +52,7 @@ a:hover {
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 80%;
 		z-index: -1;
 		transition: all 0.3s;
 }
@@ -60,23 +62,30 @@ a:hover {
 }
 
 .section-products #product-1 .part-1::before {
-    background: url("../css/images/Helicopter.jpg") no-repeat center;
+    background: url("images/cessna_select.png") no-repeat center;
     background-size: cover;
 		transition: all 0.3s;
+
 }
 
 .section-products #product-2 .part-1::before {
-    background: url("../css/images/Cesna.jpg") no-repeat center;
+    background: url("images/airbus_select.png") no-repeat center;
     background-size: cover;
+
 }
 
 .section-products #product-3 .part-1::before {
-    background: url("../css/images/A380.jpg") no-repeat center;
+    background: url("images/fighter_select.png") no-repeat center;
     background-size: cover;
 }
 
 .section-products #product-4 .part-1::before {
-    background: url("../css/images/caza.jpg") no-repeat center;
+    background: url("images/helicopter_select.png") no-repeat center;
+    background-size: cover;
+}
+
+.section-products #product-5 .part-1::before {
+    background: url("images/acrobatic_select.png") no-repeat center;
     background-size: cover;
 }
 
@@ -136,9 +145,180 @@ a:hover {
 
 .section-products .single-product .part-2 .product-title {
     font-size: 1rem;
+    text-align: center;
 }
 
 .section-products .single-product .part-2 h4 {
-    display: inline-block;
+    text-align: center;
     font-size: 1rem;
+}
+
+
+.navbar{
+  position: fixed;
+  background-color: transparent;
+  width: 100%;
+  padding: 30px 0;
+  top: 0;
+  z-index: 999;
+  transition: .3s linear;
+}
+
+.inner-width{
+  max-width: 1300px;
+  margin: auto;
+  padding: 0 40px;
+}
+
+.navbar .inner-width{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  width: 32px;
+  height: 32px;
+  background-image: url(../css/flight.png);
+  background-size: contain;
+}
+
+.menu-toggler{
+  background: none;
+  width: 30px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  z-index: 999;
+  display: none;
+}
+
+.menu-toggler span{
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  margin: 6px 0;
+  position: relative;
+  transition: .3s linear;
+}
+
+.navbar-menu a{
+  margin-left: 10px;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: .3s linear;
+}
+
+.navbar-menu a:hover{
+  background: #fff;
+  color: #2f3640;
+  transform: scale(1.1);
+}
+
+.navbar-menu i{
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.tableStyle {
+  margin: auto;
+  width: 75%;
+}
+
+@media screen and (max-width:700px) {
+  .menu-toggle-btn{
+    display: block !important;
+  }
+
+  .navigation-menu{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: #172b4d;
+    top: 0;
+    right: -100%;
+    max-width: 400px;
+    padding: 80px 50px;
+    transition: .3s linear;
+  }
+
+  .navigation-menu::before{
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #172b4d;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+  }
+
+  .navigation-menu a{
+    display: block;
+    margin: 10px 0;
+  }
+
+  .navigation-menu.active{
+    display: block;
+  }
+}
+
+.home{
+  color: #ff6b6b;
+}
+
+.game{
+  color: #A24D89;
+}
+
+.ranking{
+  color: #0abde3;
+}
+
+.shop{
+  color: #feca57;
+}
+
+.team{
+  color: #5f27cd;
+}
+
+.logout{
+  color: #1dd1a1;
+}
+
+.sticky{
+  background-color: #fff;
+  padding: 18px 0;
+}
+
+.sticky .logo{
+  background-image: url(../css/flight.png);
+}
+
+.sticky .navbar-menu a{
+  margin-left: 10px;
+  color: #2f3640;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: .3s linear;
+}
+
+.sticky .navbar-menu a:hover{
+  background: #DAF7A6;
+  transform: scale(1.1);
+}
+
+.sticky .navbar-menu i{
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.sticky .menu-toggler span{
+  background-color: #111;
 }
