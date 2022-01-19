@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
-body {
-    font-family: "Poppins", sans-serif;
-    color: #444444;
-    background-color: #DAF7A6;
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  color: #444444;
+  background-color: #DAF7A6;
+}
+
+html{
+  scroll-behavior: smooth;
 }
 
 a,
@@ -12,11 +19,8 @@ a:hover {
     color: inherit;
 }
 
-.section-products {
-    padding: 80px 0 54px;
-}
-
 .section-products .header {
+    margin-top: 100px;
     margin-bottom: 30px;
 }
 
@@ -31,16 +35,14 @@ a:hover {
     font-weight: 400;
     color: #444444; 
 }
-
-
-.section-products .single-product {
-    margin-bottom: 26px;
-
+.row{
+    justify-content: space-between;
 }
 
 .section-products .single-product .part-1 {
     position: relative;
     height: 290px;
+    width: 250px;
     max-height: 290px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -156,24 +158,22 @@ a:hover {
 
 .navbar{
   position: fixed;
-  background-color: transparent;
+  background-color: #ffffff;
   width: 100%;
   padding: 30px 0;
   top: 0;
   z-index: 999;
   transition: .3s linear;
-}
 
-.inner-width{
-  max-width: 1300px;
-  margin: auto;
-  padding: 0 40px;
 }
 
 .navbar .inner-width{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  margin-left: 65px;
+  margin-right: 65px;
 }
 
 .logo{
@@ -181,6 +181,10 @@ a:hover {
   height: 32px;
   background-image: url(../css/flight.png);
   background-size: contain;
+  justify-content: flex-start;
+}
+.full-width {
+    max-width: 90%;
 }
 
 .menu-toggler{
@@ -205,7 +209,7 @@ a:hover {
 
 .navbar-menu a{
   margin-left: 10px;
-  color: #ddd;
+  color: #000000;
   text-transform: uppercase;
   font-size: 14px;
   padding: 12px 20px;
@@ -213,20 +217,9 @@ a:hover {
   transition: .3s linear;
 }
 
-.navbar-menu a:hover{
-  background: #fff;
-  color: #2f3640;
-  transform: scale(1.1);
-}
-
-.navbar-menu i{
-  margin-right: 8px;
-  font-size: 16px;
-}
-
 .tableStyle {
   margin: auto;
-  width: 75%;
+  width: 100%;
 }
 
 @media screen and (max-width:700px) {
@@ -290,6 +283,34 @@ a:hover {
   color: #1dd1a1;
 }
 
+.logo{
+  background-image: url(../css/flight.png);
+}
+
+.navbar-menu a{
+  margin-left: 10px;
+  color: #2f3640;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: .3s linear;
+}
+
+
+.navbar-menu a:hover{
+  background: #DAF7A6;
+  transform: scale(1.1);
+}
+
+.navbar-menu i{
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.menu-toggler span{
+  background-color: #111;
+}
 .sticky{
   background-color: #fff;
   padding: 18px 0;

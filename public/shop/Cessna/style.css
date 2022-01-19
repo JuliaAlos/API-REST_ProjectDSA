@@ -123,13 +123,19 @@ body{
   border-radius: 12px;
 }
 .p1{
-  width: 90%;
+  width: 30%;
 }
 .p2{
   width: 70%;
 }
 .p3{
-  width: 50%;
+  width: 40%;
+}
+.p4{
+  width: 20%;
+}
+.p5{
+  width: 20%;
 }
 .progress-bar span{
   float: right;
