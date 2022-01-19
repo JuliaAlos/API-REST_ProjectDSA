@@ -9,7 +9,7 @@ CREATE TABLE Player (
                         PlayerName varchar(255) UNIQUE NOT NULL,
                         MaxDistance integer DEFAULT 0,
                         Rol varchar(255) DEFAULT 'Cadet',
-                        TimeOfFlight integer DEFAULT 0,
+                        TimeOfFlight float DEFAULT 0.0,
                         Bitcoins integer DEFAULT 0
 );
 

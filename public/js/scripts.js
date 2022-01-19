@@ -1,4 +1,26 @@
 $(document).ready(function() {
+
+  let username = localStorage.getItem("username");
+  console.log("Username: " + username)
+
+  $("#logout").click(function (){
+    $.ajax({
+      type: "GET",
+      url: `/dsaApp/user/logout/${username}`,
+      contentType: "application/json",
+      success: function (data) {
+        console.log('User logged out');
+        document.location.href = document.location.origin + '/'
+
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+        console.log('Could not log out')
+      },
+    });
+  })
+
+
+
   $(window).scroll(function () {
     if (this.scrollY > 20) {
       $(".navbar").addClass("sticky");
@@ -32,7 +54,6 @@ $(document).ready(function() {
     success: function (data) {
       console.log(data);
 
-
       $.each(data, function (index, element) {
         if(index<10){
           let $tr = $("<tr>").append(
@@ -50,8 +71,19 @@ $(document).ready(function() {
     error: function (xhr, ajaxOptions, thrownError) {
       console.log('Could not load distance ranking')
     },
+  });
 
-
+  $.ajax({
+    type: "GET",
+    url: `/dsaApp/user/getByDistance/${username}`,
+    contentType: "application/json",
+    success: function (data) {
+      console.log(data);
+      $("#distanceText").text(`Your position in the leader board is ${data.pos} with ${data.score} m!`);
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      console.log('Could not load distance ranking')
+    },
   });
 
   $.ajax({
@@ -76,6 +108,19 @@ $(document).ready(function() {
         }
       });
 
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      console.log('Could not load time ranking')
+    },
+  });
+
+  $.ajax({
+    type: "GET",
+    url: `/dsaApp/user/getByTime/${username}`,
+    contentType: "application/json",
+    success: function (data) {
+      console.log(data);
+      $("#timeText").text(`Your position in the leader board is ${data.pos} with ${data.score} h!`);
     },
     error: function (xhr, ajaxOptions, thrownError) {
       console.log('Could not load time ranking')
@@ -112,6 +157,19 @@ $(document).ready(function() {
 
   $.ajax({
     type: "GET",
+    url: `/dsaApp/user/getByMoney/${username}`,
+    contentType: "application/json",
+    success: function (data) {
+      console.log(data);
+      $("#moneyText").text(`Your position in the leader board is ${data.pos} with ${data.score} bitcoins!`);
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      console.log('Could not load bitcoins ranking')
+    },
+  });
+
+  $.ajax({
+    type: "GET",
     url: `/dsaApp/user/getByRol`,
     contentType: "application/json",
     success: function (data) {
@@ -132,6 +190,19 @@ $(document).ready(function() {
         }
 
       });
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+      console.log('Could not load rol ranking')
+    },
+  });
+
+  $.ajax({
+    type: "GET",
+    url: `/dsaApp/user/getByRol/${username}`,
+    contentType: "application/json",
+    success: function (data) {
+      console.log(data);
+      $("#rolText").text(`Your position in the leader board is ${data.pos} by being a ${data.score}!`);
     },
     error: function (xhr, ajaxOptions, thrownError) {
       console.log('Could not load rol ranking')

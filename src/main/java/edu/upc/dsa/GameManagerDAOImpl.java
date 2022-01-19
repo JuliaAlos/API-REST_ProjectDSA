@@ -218,9 +218,8 @@ public class GameManagerDAOImpl implements GameManager{
         logger.info("Sync new game results");
         User user = (User) session.getByUsername(User.class,userName);
         Player player = user.getPlayer();
-
         player.setBitcoins(player.getBitcoins() + gameResults.getCollectedBitcoins());
-        player.setTimeOfFlight(player.getTimeOfFlight() + gameResults.getTimeOfFlight());
+        player.setTimeOfFlight(player.getTimeOfFlight() + gameResults.getTimeOfFlight()/3600f);
         if(player.getMaxDistance() < gameResults.getDistance()) player.setMaxDistance(gameResults.getDistance());
 
         session.update(player);
