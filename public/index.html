@@ -25,6 +25,8 @@
           dataType: 'json',
           success: function (json){
             console.log('success')
+            console.log(json.userName + " logged in!")
+            localStorage.setItem("username", json.userName)
             document.location.href = document.location.origin + '/home'
           },
           error: function (xhr, status,error){
