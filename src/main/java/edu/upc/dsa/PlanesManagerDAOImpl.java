@@ -12,10 +12,12 @@ import java.util.List;
 public class PlanesManagerDAOImpl implements PlanesManager{
     private static PlanesManagerDAOImpl manager;
     private SessionImpl session;
+    private InsigniasManagerDAOImpl insignias;
     final static Logger logger = Logger.getLogger(PlanesManagerDAOImpl.class);
 
     public PlanesManagerDAOImpl() {
         session = SessionImpl.getInstance();
+        insignias = InsigniasManagerDAOImpl.getInstance();
     }
 
     public static PlanesManagerDAOImpl getInstance() {
@@ -53,7 +55,9 @@ public class PlanesManagerDAOImpl implements PlanesManager{
         Player p = (Player) session.getByUsername(Player.class, playerName);
         Plane plane = new Plane(planeModel, p.getId());
         session.save(plane);
-
+        if (!insignias.playerHasInsignia(playerName, "First_purchase")) {
+            insignias.addInsigniaToPlayer("First_purchase", playerName);
+        }
     }
 
     @Override

@@ -11,14 +11,15 @@ public class GameManagerDAOImpl implements GameManager{
 
     private static GameManagerDAOImpl manager;
     private SessionImpl session;
+    private InsigniasManagerDAOImpl insignias;
     final static Logger logger = Logger.getLogger(GameManagerDAOImpl.class);
 
 
 
     private GameManagerDAOImpl(){
         session  = SessionImpl.getInstance();
+        insignias = InsigniasManagerDAOImpl.getInstance();
     }
-
 
     public static GameManagerDAOImpl getInstance(){
         if(manager==null){
@@ -221,6 +222,44 @@ public class GameManagerDAOImpl implements GameManager{
         player.setBitcoins(player.getBitcoins() + gameResults.getCollectedBitcoins());
         player.setTimeOfFlight(player.getTimeOfFlight() + gameResults.getTimeOfFlight()/3600f);
         if(player.getMaxDistance() < gameResults.getDistance()) player.setMaxDistance(gameResults.getDistance());
+        if(gameResults.getDistance() > 50 && gameResults.getDistance() < 1000) {
+            if (!insignias.playerHasInsignia(userName, "Centimetre")) {
+                insignias.addInsigniaToPlayer("Centimetre", user.getUserName());
+            }
+        }
+        if(gameResults.getDistance() > 1000) {
+            if (!insignias.playerHasInsignia(userName, "World")) {
+                insignias.addInsigniaToPlayer("World", user.getUserName());
+            }
+        }
+        double fiveMin = 5/3600;
+        if(player.getTimeOfFlight() > fiveMin && player.getTimeOfFlight() < 1) {
+            if (!insignias.playerHasInsignia(userName, "5min")) {
+                insignias.addInsigniaToPlayer("5min", user.getUserName());
+            }
+        }
+        if(player.getTimeOfFlight() > 1 && player.getTimeOfFlight() < 24) {
+            if (!insignias.playerHasInsignia(userName, "1hour")) {
+                insignias.addInsigniaToPlayer("1hour", user.getUserName());
+            }
+        }
+        if(player.getTimeOfFlight() >  24) {
+            if (!insignias.playerHasInsignia(userName, "24/7playing")) {
+                insignias.addInsigniaToPlayer("24/7playing", user.getUserName());
+            }
+        }
+        if(player.getBitcoins() > 500 && player.getBitcoins() < 2000){
+            if (!insignias.playerHasInsignia(userName, "Wealth")) {
+                insignias.addInsigniaToPlayer("Wealth", user.getUserName());
+            }
+        }
+        if(player.getBitcoins() > 2000){
+            if (!insignias.playerHasInsignia(userName, "Diamond")) {
+                insignias.addInsigniaToPlayer("Diamond", user.getUserName());
+            }
+        }
+
+
 
         session.update(player);
 

@@ -57,6 +57,19 @@ public class InsigniasManagerDAOImpl implements InsigniasManager{
 
     }
 
+   public Boolean playerHasInsignia(String playerName, String InsigniaName){
+        List<Insignia> p = getAllFromPlayer(playerName);
+        boolean index = false;
+        for (int i=0; i<p.size(); i++){
+            if(p.get(i).getName().equals(InsigniaName)){
+                index = true;
+            }
+        }
+        if(index){ logger.info(playerName +"has"+ InsigniaName);}
+        else{ logger.info(playerName +"doesn't have"+ InsigniaName);}
+        return index;
+   }
+
     public Boolean existPlayer(String playerName){
         if(session.getByUsername(Player.class, playerName)!=null){
             logger.info(playerName+" found");
