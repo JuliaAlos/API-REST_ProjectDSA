@@ -4,6 +4,16 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="style.css">
+    <script>
+	  $(document).ready(function() {
+
+        let username = localStorage.getItem("username");
+        console.log("Username: " + username)
+        if (username==null){
+        document.location.href = document.location.origin + '/notFound'
+        }
+      });
+    </script>
   </head>
   <body>
 <div class="card">

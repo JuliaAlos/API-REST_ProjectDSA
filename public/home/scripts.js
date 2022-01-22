@@ -2,6 +2,9 @@ $(document).ready(function() {
 
   let username = localStorage.getItem("username");
   console.log("Username: " + username)
+  if (username==null){
+      document.location.href = document.location.origin + '/notFound'
+    }
 
   $("#logout").click(function (){
     $.ajax({
