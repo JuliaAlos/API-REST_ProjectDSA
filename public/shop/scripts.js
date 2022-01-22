@@ -2,6 +2,9 @@ $(document).ready(function() {
 
   let username = localStorage.getItem("username");
   console.log("Username: " + username)
+  if (username==null){
+    document.location.href = document.location.origin + '/notFound'
+  }
 
   $.ajax({
       type: "GET",
@@ -23,7 +26,9 @@ $(document).ready(function() {
       contentType: "application/json",
       success: function (data) {
         console.log('User logged out');
-        document.location.href = document.location.origin + '../'
+        localStorage.clear();
+        document.location.href = document.location.origin + '/'
+
 
       },
       error: function (xhr, ajaxOptions, thrownError) {

@@ -10,6 +10,7 @@ $(document).ready(function() {
       contentType: "application/json",
       success: function (data) {
         console.log('User logged out');
+        localStorage.clear();
         document.location.href = document.location.origin + '/'
 
       },

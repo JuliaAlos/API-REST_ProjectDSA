@@ -89,7 +89,7 @@ public class PlanesService {
             int bitcoinsUser = this.managerUser.getUser(planePlayerTO.getPlayerName()).getPlayer().getBitcoins();
             if ( pricePlane <= bitcoinsUser) {
                 this.manager.addPlaneToPlayer(planePlayerTO.getPlaneModel(), planePlayerTO.getPlayerName());
-                this.managerUser.getUser(planePlayerTO.getPlayerName()).getPlayer().setBitcoins(bitcoinsUser-pricePlane);
+                this.managerUser.setMoney(bitcoinsUser-pricePlane,planePlayerTO.getPlayerName());
                 return Response.status(201).build();
             }
         }
