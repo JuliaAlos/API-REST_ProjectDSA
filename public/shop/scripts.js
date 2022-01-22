@@ -26,7 +26,7 @@ $(document).ready(function() {
     contentType: "application/json",
     success: function (data) {
       console.log(data);
-      $.each(json, function(index, element){
+      $.each(data, function(index, element){
         if (element.model == "Airbus"){
             $("#airbus").remove();
         }
