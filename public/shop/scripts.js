@@ -9,7 +9,7 @@ $(document).ready(function() {
       contentType: "application/json",
       success: function (data) {
         console.log(data);
-        $("#money").text(`${data.score}`);
+        $("#money").text(`  Bitcoins: ${data.score}`);
       },
       error: function (xhr, ajaxOptions, thrownError) {
         console.log('Could not load bitcoins ranking')
@@ -23,7 +23,7 @@ $(document).ready(function() {
       contentType: "application/json",
       success: function (data) {
         console.log('User logged out');
-        document.location.href = document.location.origin + '/'
+        document.location.href = document.location.origin + '../'
 
       },
       error: function (xhr, ajaxOptions, thrownError) {
