@@ -1,6 +1,7 @@
 package edu.upc.dsa.services;
 
 import edu.upc.dsa.GameManager;
+import edu.upc.dsa.GameManagerDAOImpl;
 import edu.upc.dsa.PlanesManager;
 import edu.upc.dsa.PlanesManagerDAOImpl;
 import edu.upc.dsa.models.*;
@@ -27,6 +28,7 @@ public class PlanesService {
 
     public PlanesService() {
         this.manager = PlanesManagerDAOImpl.getInstance();
+        this.managerUser = GameManagerDAOImpl.getInstance();
     }
 
     @GET
