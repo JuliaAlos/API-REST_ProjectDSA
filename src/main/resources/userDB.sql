@@ -79,10 +79,6 @@ CREATE TABLE ForumEntry (
 
 
 
-
-
-
-
 INSERT INTO Player(PlayerName, Id) VALUES ('Pau', 'IdPau');
 INSERT INTO Player(PlayerName, Id) VALUES ('Julia', 'IdJulia');
 INSERT INTO Player(PlayerName, Id, Bitcoins) VALUES ('Arnau', 'IdArnau', 200);
