@@ -85,8 +85,6 @@ public class GameService {
     public Response uploadGame(GameResults gameResults, @PathParam("userName") String userName) {
         if (!manager.existUser(userName))  return Response.status(404).build();
         this.manager.syncGameResults(gameResults, userName);
-
-
         return Response.status(201).build();
     }
 
@@ -100,7 +98,7 @@ public class GameService {
 
     @Path("/syncBitcoins/{userName}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response uploadGame(SetBitcoinsTO bitcoins, @PathParam("userName") String userName) {
+    public Response syncBitcoins(SetBitcoinsTO bitcoins, @PathParam("userName") String userName) {
         if (!manager.existUser(userName))  return Response.status(404).build();
         this.manager.setMoney(bitcoins.getBitcoins(), userName);
 
