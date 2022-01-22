@@ -72,10 +72,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addPlaneToPlayer`,
         contentType: "application/json",
-        data: {
-                "playerName": ${username},
-                "planeModel": "cessna"
-              }
+        data: JSON.stringify({playerName: username, planeModel: "Cessna"}),
         success: function (data) {
           console.log('Buy cessna');
           document.location.href = document.location.origin + '/shop'
@@ -93,10 +90,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addPlaneToPlayer`,
         contentType: "application/json",
-        data: {
-                "playerName": ${username},
-                "planeModel": "airbus"
-              }
+        data: JSON.stringify({playerName: username, planeModel: "Airbus"}),
         success: function (data) {
           console.log('Buy airbus');
           document.location.href = document.location.origin + '/shop'
@@ -114,10 +108,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addPlaneToPlayer`,
         contentType: "application/json",
-        data: {
-                "playerName": ${username},
-                "planeModel": "fighter"
-              }
+        data: JSON.stringify({playerName: username, planeModel: "Fighter"}),
         success: function (data) {
           console.log('Buy fighter');
           document.location.href = document.location.origin + '/shop'
@@ -135,10 +126,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addPlaneToPlayer`,
         contentType: "application/json",
-        data: {
-                "playerName": ${username},
-                "planeModel": "helicopter"
-              }
+        data: JSON.stringify({playerName: username, planeModel: "Helicopter"}),
         success: function (data) {
           console.log('Buy helicopter');
           document.location.href = document.location.origin + '/shop'
@@ -156,10 +144,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addPlaneToPlayer`,
         contentType: "application/json",
-        data: {
-                "playerName": ${username},
-                "planeModel": "acrobatic"
-              }
+        data: JSON.stringify({playerName: username, planeModel: "Acrobatic"}),
         success: function (data) {
           console.log('Buy acrobatic');
           document.location.href = document.location.origin + '/shop'
