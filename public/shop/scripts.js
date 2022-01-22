@@ -96,6 +96,7 @@ $(document).ready(function() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not buy')
+          window.alert(error)
         },
       });
   });
@@ -116,6 +117,7 @@ $(document).ready(function() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not buy')
+          window.alert(error)
         },
       });
   });
@@ -136,6 +138,7 @@ $(document).ready(function() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not buy')
+          window.alert(error)
         },
       });
   });
@@ -150,12 +153,13 @@ $(document).ready(function() {
                 "planeModel": "helicopter"
               }
         success: function (data) {
-          console.log('Buy cessna');
+          console.log('Buy helicopter');
           document.location.href = document.location.origin + '/shop'
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not buy')
+          window.alert(error)
         },
       });
   });
@@ -170,12 +174,13 @@ $(document).ready(function() {
                 "planeModel": "acrobatic"
               }
         success: function (data) {
-          console.log('Buy cessna');
+          console.log('Buy acrobatic');
           document.location.href = document.location.origin + '/shop'
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not buy')
+          window.alert(error)
         },
       });
   });

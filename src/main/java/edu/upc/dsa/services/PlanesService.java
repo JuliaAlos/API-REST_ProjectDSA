@@ -1,5 +1,6 @@
 package edu.upc.dsa.services;
 
+import edu.upc.dsa.GameManager;
 import edu.upc.dsa.PlanesManager;
 import edu.upc.dsa.PlanesManagerDAOImpl;
 import edu.upc.dsa.models.*;
@@ -22,6 +23,7 @@ import java.util.List;
 public class PlanesService {
 
     private PlanesManager manager;
+    private GameManager managerUser;
 
     public PlanesService() {
         this.manager = PlanesManagerDAOImpl.getInstance();
@@ -73,7 +75,7 @@ public class PlanesService {
     @ApiOperation(value = "Add a plane to a player", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Added"),
-            @ApiResponse(code = 409, message = "No plane or player found in the system.")
+            @ApiResponse(code = 409, message = "No plane or player found in the system or not enough bitcoins.")
 
     })
 
@@ -81,12 +83,15 @@ public class PlanesService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addPlaneToPlayer(PlanePlayerTO planePlayerTO) {
         if (this.manager.existPlaneModel(planePlayerTO.getPlaneModel()) && (this.manager.existPlayer(planePlayerTO.getPlayerName()))){
-            this.manager.addPlaneToPlayer(planePlayerTO.getPlaneModel(),planePlayerTO.getPlayerName());
-            return Response.status(201).build();
+            int pricePlane = this.manager.getPlaneByModel(planePlayerTO.getPlaneModel()).getPrice();
+            int bitcoinsUser = this.managerUser.getUser(planePlayerTO.getPlayerName()).getPlayer().getBitcoins();
+            if ( pricePlane <= bitcoinsUser) {
+                this.manager.addPlaneToPlayer(planePlayerTO.getPlaneModel(), planePlayerTO.getPlayerName());
+                this.managerUser.getUser(planePlayerTO.getPlayerName()).getPlayer().setBitcoins(bitcoinsUser-pricePlane);
+                return Response.status(201).build();
+            }
         }
-        else{
-            return Response.status(409).build();
-        }
+        return Response.status(409).build();
     }
 
     //------------------------------
