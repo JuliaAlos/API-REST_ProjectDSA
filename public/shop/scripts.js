@@ -30,7 +30,7 @@ $(document).ready(function() {
         console.log('Could not log out')
       },
     });
-  })
+  });
 
 
   $.ajax({
