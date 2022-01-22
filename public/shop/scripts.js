@@ -59,7 +59,7 @@ $(document).ready(function() {
         }
         if (element.model == "Helicopter"){
             $("#helicopter").remove();
-            ("#helicopterT").remove();
+            $("#helicopterT").remove();
         }
         if (element.model == "Acrobatic"){
             $("#acrobatic").remove();
