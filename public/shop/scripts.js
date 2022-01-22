@@ -22,7 +22,7 @@ $(document).ready(function() {
 
   $.ajax({
     type: "GET",
-    url: `/dsaApp/user/getListPlanesPlayer/${username}`,
+    url: `/dsaApp/planes/getListPlanesPlayer/${username}`,
     contentType: "application/json",
     success: function (data) {
       console.log(data);
