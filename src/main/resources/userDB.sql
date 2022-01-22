@@ -91,13 +91,12 @@ INSERT INTO User(UserName, Password, PlayerId, Id) VALUES ('Marc', MD5('Marc'),(
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Welcome', '1');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('Diamond', '2');
 INSERT INTO InsigniaModel(Name, Type) VALUES ('First_purchase', '3');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Zombie', '4');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('5min', '5');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('1hour', '6');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('24/7playing', '7');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Centimetre', '8');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('World', '9');
-INSERT INTO InsigniaModel(Name, Type) VALUES ('Wealth', '10');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('5min', '4');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('1hour', '5');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('24/7playing', '6');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Centimetre', '7');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('World', '8');
+INSERT INTO InsigniaModel(Name, Type) VALUES ('Wealth', '9');
 
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('1', 'Welcome',  '1/2/2021' , (SELECT id from Player WHERE PlayerName = 'Marc'));
 INSERT INTO Insignia(Id, Name, Data, PlayerId) VALUES ('2', 'Welcome',  '1/3/2021' , (SELECT id from Player WHERE PlayerName = 'Pau'));
