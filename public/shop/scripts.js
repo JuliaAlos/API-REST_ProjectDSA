@@ -5,27 +5,14 @@ $(document).ready(function() {
 
   $.ajax({
       type: "GET",
-      url: `/dsaApp/user/getByDistance`,
+      url: `/dsaApp/user/getByMoney/${username}`,
       contentType: "application/json",
       success: function (data) {
         console.log(data);
-
-        $.each(data, function (index, element) {
-          if(index<10){
-            let $tr = $("<tr>").append(
-                $("<td>").text(index+1),
-                $("<td>").text(
-                    element.userName
-                ),
-                $("<td>").text(element.score)
-            );
-
-            $("#distanceTable").children("tbody").append($tr)
-          }
-        });
+        $("#moneyText").text(`${data.score}`);
       },
       error: function (xhr, ajaxOptions, thrownError) {
-        console.log('Could not load distance ranking')
+        console.log('Could not load bitcoins ranking')
       },
     });
 
