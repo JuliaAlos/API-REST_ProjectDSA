@@ -7,40 +7,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
   <link rel="stylesheet" href="style.css">
 	<script src="scripts.js"></script>
-  <script>
-    $(document).ready(function(){
-        $(".table").hide();
-        $("button").click(function(){
-            $('#body').empty();
-            $.ajax({
-                type: 'GET',
-                url: 'http://147.83.7.203:8080/dsaApp/planes/GetAllPlanes',
-                data: { get_param: 'value' },
-                dataType: 'json',
-                success: function (json) {
-                    var count=0;
-                    $.each(json, function(index, element){
-                        $('#body').append('<tr><td>'+element.name+'</td><td>'+element.description+'</td><td>'+element.stargazers_count+'</td></tr>');
-                        count++;
-                        });
-                    if(count>0){
-                        $("#text1").text("Repositories " +$("#userName").val());
-                        $(".table").show(1000);}
-                    else{
-                        $("#text1").text("Not Found");
-                        $(".table").hide();}
-                },
-                error : function(xhr, status) {
-                    $("#text1").text("Error");
-                    $(".table").hide();
-                }
 
-
-            });
-
-        });
-    });
-</script>
 </head>
 <!-- Navbar -->
 <nav class="navbar sticky">
@@ -71,7 +38,7 @@
 						<div class="col-md-5 col-lg-6">
 								<div class="header">
 										<h2>HANGAR</h2>
-										<h3>Best planes</h3>
+										<i class="icon fas fa-coins">	Best planes</i>
 
 								</div>
 						</div>
@@ -83,7 +50,7 @@
 								<div id="product-1" class="single-product">
 										<div class="part-1">
 												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#" id="cessna"><i class="fas fa-shopping-cart"></i></a></li>
 														<li><a href="Cessna/"><i class="fas fa-info-circle"></i></a></li>
 												</ul>
 										</div>
@@ -99,7 +66,7 @@
 										<div class="part-1">
 												<span class="unlock">Unlock</span>
 												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#" id="airbus"><i class="fas fa-shopping-cart"></i></a></li>
 														<li><a href="Airbus/"><i class="fas fa-info-circle"></i></a></li>
 												</ul>
 										</div>
@@ -114,7 +81,7 @@
 								<div id="product-3" class="single-product">
 										<div class="part-1">
 												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#" id="fighter"><i class="fas fa-shopping-cart"></i></a></li>
 														<li><a href="Fighter/"><i class="fas fa-info-circle"></i></a></li>
 												</ul>
 										</div>
@@ -132,7 +99,7 @@
 										<div class="part-1">
 												<span class="new">new</span>
 												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#" id="helicopter"><i class="fas fa-shopping-cart"></i></a></li>
 														<li><a href="Helicopter/"><i class="fas fa-info-circle"></i></a></li>
 												</ul>
 										</div>
@@ -147,7 +114,7 @@
 								<div id="product-5" class="single-product">
 										<div class="part-1">
 												<ul>
-														<li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+														<li><a href="#" id="acrobatic"><i class="fas fa-shopping-cart"></i></a></li>
 														<li><a href="Acrobatic/"><i class="fas fa-info-circle"></i></a></li>
 												</ul>
 										</div>
