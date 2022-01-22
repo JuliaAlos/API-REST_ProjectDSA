@@ -127,18 +127,28 @@ public class PlanesService {
     @ApiOperation(value = "Add an upgrade to a plane of a player", notes = "asdasd")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Upgrade added"),
-            @ApiResponse(code = 409, message = "No plane or player found in the system.")
+            @ApiResponse(code = 409, message = "No plane or player found in the system, or not enough bitcoins.")
 
     })
 
     @Path("/addUpgradeToPlayer")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addUpgradeToPlayer(Upgrade upgrade) {
-        if (this.manager.existPlaneModel(upgrade.getPlaneModelModel()) && (this.manager.existPlayer(upgrade.getPlayerName()))){
-            this.manager.addUpgradeToPlayer(upgrade.getModificationCode(), upgrade.getPlayerName(), upgrade.getPlaneModelModel());
-            return Response.status(201).build();
+        User user = managerUser.getUser(upgrade.getPlayerName());
+        Integer currentBitcoins = user.getPlayer().getBitcoins();
+        int priceUpdate = 10;
+        int actualizedBitcoins = currentBitcoins - priceUpdate;
+        if (actualizedBitcoins >= 0) {
+            if (this.manager.existPlaneModel(upgrade.getPlaneModelModel()) && (this.manager.existPlayer(upgrade.getPlayerName()))) {
+                this.manager.addUpgradeToPlayer(upgrade.getModificationCode(), upgrade.getPlayerName(), upgrade.getPlaneModelModel());
+                this.managerUser.setMoney(actualizedBitcoins, user.getUserName());
+                return Response.status(201).build();
+            }
+            else {
+                return Response.status(409).build();
+            }
         }
-        else{
+        else {
             return Response.status(409).build();
         }
     }
