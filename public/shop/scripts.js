@@ -28,19 +28,19 @@ $(document).ready(function() {
       console.log(data);
       $.each(json, function(index, element){
         if (element.model == "Airbus"){
-            $("#airbus").hide();
+            $("#airbus").remove();
         }
         if (element.model == "Fighter"){
-            $("#fighter").hide();
+            $("#fighter").remove();
         }
         if (element.model == "Cessna"){
-            $("#cessna").hide();
+            $("#cessna").remove();
         }
         if (element.model == "Helicopter"){
-            $("#helicopter").hide();
+            $("#helicopter").remove();
         }
         if (element.model == "Acrobatic"){
-            $("#acrobatic").hide();
+            $("#acrobatic").remove();
         }
       });
     },
