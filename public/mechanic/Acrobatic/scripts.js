@@ -47,11 +47,11 @@ $(document).ready(function() {
       console.log(data);
       $.each(data, function(index, element){
         if (element.model == "Acrobatic"){
-        var a =${element.enginesLife};
-        var b =${element.velY};
-        var c =${element.velX};
-        var d =${element.fuel};
-        var e =${element.gravity};
+        var a =element.enginesLife;
+        var b =element.velY;
+        var c =element.velX;
+        var d =element.fuel;
+        var e =element.gravity;
             $("#1").html('<div class="progress-bar p'+ a +'" id="1"><span>'+ a +'%</span></div>');
             $("#2").html('<div class="progress-bar p'+ b +'" id="1"><span>'+ b +'%</span></div>');
             $("#3").html('<div class="progress-bar p'+ c +'" id="1"><span>'+ c +'%</span></div>');
