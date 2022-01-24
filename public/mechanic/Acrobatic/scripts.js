@@ -70,7 +70,7 @@ $(document).ready(function() {
         type: "POST",
         url: `/dsaApp/planes/addUpgradeToPlayer`,
         contentType: "application/json",
-        data: JSON.stringify({modificationCode: 0, playerName: username, planeModelModel: "Acrobatic"}),
+        data: JSON.stringify({modificationCode: "0", playerName: username, planeModelModel: "Acrobatic"}),
         success: function (data) {
           document.location.href = document.location + '/'
         },
@@ -83,7 +83,7 @@ $(document).ready(function() {
                type: "POST",
                url: `/dsaApp/planes/addUpgradeToPlayer`,
                contentType: "application/json",
-               data: JSON.stringify({modificationCode: 1, playerName: username, planeModelModel: "Acrobatic"}),
+               data: JSON.stringify({modificationCode: "1", playerName: username, planeModelModel: "Acrobatic"}),
                success: function (data) {
                  document.location.href = document.location + '/'
                },
@@ -97,7 +97,7 @@ $(document).ready(function() {
             type: "POST",
             url: `/dsaApp/planes/addUpgradeToPlayer`,
             contentType: "application/json",
-            data: JSON.stringify({modificationCode: 2, playerName: username, planeModelModel: "Acrobatic"}),
+            data: JSON.stringify({modificationCode: "2", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
               document.location.href = document.location + '/'
             },
@@ -111,7 +111,7 @@ $(document).ready(function() {
             type: "POST",
             url: `/dsaApp/planes/addUpgradeToPlayer`,
             contentType: "application/json",
-            data: JSON.stringify({modificationCode: 3, playerName: username, planeModelModel: "Acrobatic"}),
+            data: JSON.stringify({modificationCode: "3", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
               document.location.href = document.location + '/'
             },
@@ -125,7 +125,7 @@ $(document).ready(function() {
             type: "POST",
             url: `/dsaApp/planes/addUpgradeToPlayer`,
             contentType: "application/json",
-            data: JSON.stringify({modificationCode: 4, playerName: username, planeModelModel: "Acrobatic"}),
+            data: JSON.stringify({modificationCode: "4", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
               document.location.href = document.location + '/'
             },
