@@ -47,11 +47,16 @@ $(document).ready(function() {
       console.log(data);
       $.each(data, function(index, element){
         if (element.model == "Acrobatic"){
-            $("#1").html('<div class="progress-bar p'+'${element.enginesLife}'+'" id="1"><span>'+'${element.enginesLife}'+'%</span></div>');
-            $("#2").html('<div class="progress-bar p'+'${element.velY}'+'" id="1"><span>'+'${element.velY}'+'%</span></div>');
-            $("#3").html('<div class="progress-bar p'+'${element.velX}'+'" id="1"><span>'+'${element.velX}'+'%</span></div>');
-            $("#4").html('<div class="progress-bar p'+'${element.fuel}'+'" id="1"><span>'+'${element.fuel}'+'%</span></div>');
-            $("#5").html('<div class="progress-bar p'+'${element.gravity}'+'" id="1"><span>'+'${element.gravity}'+'%</span></div>');
+        var a =${element.enginesLife};
+        var b =${element.velY};
+        var c =${element.velX};
+        var d =${element.fuel};
+        var e =${element.gravity};
+            $("#1").html('<div class="progress-bar p'+ a +'" id="1"><span>'+ a +'%</span></div>');
+            $("#2").html('<div class="progress-bar p'+ b +'" id="1"><span>'+ b +'%</span></div>');
+            $("#3").html('<div class="progress-bar p'+ c +'" id="1"><span>'+ c +'%</span></div>');
+            $("#4").html('<div class="progress-bar p'+ d +'" id="1"><span>'+ d +'%</span></div>');
+            $("#5").html('<div class="progress-bar p'+ e +'" id="1"><span>'+ e +'%</span></div>');
         }
       });
     },
