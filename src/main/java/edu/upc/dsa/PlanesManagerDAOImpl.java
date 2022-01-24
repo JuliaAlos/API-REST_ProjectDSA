@@ -55,8 +55,10 @@ public class PlanesManagerDAOImpl implements PlanesManager{
         Player p = (Player) session.getByUsername(Player.class, playerName);
         Plane plane = new Plane(planeModel, p.getId());
         session.save(plane);
-        if (!insignias.playerHasInsignia(playerName, "First_purchase")) {
-            insignias.addInsigniaToPlayer("First_purchase", playerName);
+        if(!planeModel.equals("Cessna")) {
+            if (!insignias.playerHasInsignia(playerName, "First_purchase")) {
+                insignias.addInsigniaToPlayer("First_purchase", playerName);
+            }
         }
     }
 
