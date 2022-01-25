@@ -56,11 +56,11 @@ $(document).ready(function() {
             $("#3").html('<div class="progress-bar p'+ c +'" id="1"><span>'+ c +'%</span></div>');
             $("#4").html('<div class="progress-bar p'+ d +'" id="1"><span>'+ d +'%</span></div>');
             $("#5").html('<div class="progress-bar p'+ e +'" id="1"><span>'+ e +'%</span></div>');
-        if (a == 40){$("#Robustness").hide();}
-        if (b == 100){$("#Maneuverability").hide();}
-        if (c == 80){$("#Speed").hide();}
-        if (d == 10){$("#Fuel").hide();}
-        if (e == 10){$("#Weight").hide();}
+        if (a == 100){$("#Robustness").hide();}
+        if (b == 60){$("#Maneuverability").hide();}
+        if (c == 90){$("#Speed").hide();}
+        if (d == 40){$("#Fuel").hide();}
+        if (e == 80){$("#Weight").hide();}
 
     },
     error: function (xhr, ajaxOptions, thrownError) {
