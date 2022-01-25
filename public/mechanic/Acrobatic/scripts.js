@@ -75,7 +75,7 @@ $(document).ready(function() {
         contentType: "application/json",
         data: JSON.stringify({modificationCode: "0", playerName: username, planeModelModel: "Acrobatic"}),
         success: function (data) {
-          document.location.href = document.location + '/'
+          location.reload();
         },
         error: function (xhr, ajaxOptions, thrownError) {
           console.log('Could not log out')
@@ -88,7 +88,7 @@ $(document).ready(function() {
                contentType: "application/json",
                data: JSON.stringify({modificationCode: "1", playerName: username, planeModelModel: "Acrobatic"}),
                success: function (data) {
-                 document.location.href = document.location + '/'
+                 location.reload();
                },
                error: function (xhr, ajaxOptions, thrownError) {
                  console.log('Could not log out')
@@ -102,7 +102,7 @@ $(document).ready(function() {
             contentType: "application/json",
             data: JSON.stringify({modificationCode: "2", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
-              document.location.href = document.location + '/'
+              location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
               console.log('Could not log out')
@@ -116,7 +116,7 @@ $(document).ready(function() {
             contentType: "application/json",
             data: JSON.stringify({modificationCode: "3", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
-              document.location.href = document.location + '/'
+              location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
               console.log('Could not log out')
@@ -130,7 +130,7 @@ $(document).ready(function() {
             contentType: "application/json",
             data: JSON.stringify({modificationCode: "4", playerName: username, planeModelModel: "Acrobatic"}),
             success: function (data) {
-              document.location.href = document.location + '/'
+              location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
               console.log('Could not log out')
