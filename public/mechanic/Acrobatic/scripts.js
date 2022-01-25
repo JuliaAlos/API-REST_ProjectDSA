@@ -44,7 +44,7 @@ $(document).ready(function() {
     url: `/dsaApp/planes/getPlaneByModel/${username}/Acrobatic`,
     contentType: "application/json",
     success: function (element) {
-      console.log(data);
+      console.log(element);
 
         var a =element.enginesLife;
         var b =element.velY;
