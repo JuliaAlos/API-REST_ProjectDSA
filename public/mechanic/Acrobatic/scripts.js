@@ -41,12 +41,11 @@ $(document).ready(function() {
 
   $.ajax({
     type: "GET",
-    url: `/dsaApp/planes/getListPlanesPlayer/${username}`,
+    url: `/dsaApp/planes/getPlaneByModel/${username}/Acrobatic`,
     contentType: "application/json",
-    success: function (data) {
+    success: function (element) {
       console.log(data);
-      $.each(data, function(index, element){
-        if (element.model == "Acrobatic"){
+
         var a =element.enginesLife;
         var b =element.velY;
         var c =element.velX;
@@ -57,11 +56,15 @@ $(document).ready(function() {
             $("#3").html('<div class="progress-bar p'+ c +'" id="1"><span>'+ c +'%</span></div>');
             $("#4").html('<div class="progress-bar p'+ d +'" id="1"><span>'+ d +'%</span></div>');
             $("#5").html('<div class="progress-bar p'+ e +'" id="1"><span>'+ e +'%</span></div>');
-        }
-      });
+        if (a == 40){$("#Robustness").hide();}
+        if (b == 100){$("#Maneuverability").hide();}
+        if (c == 80){$("#Speed").hide();}
+        if (d == 10){$("#Fuel").hide();}
+        if (e == 10){$("#Weight").hide();}
+
     },
     error: function (xhr, ajaxOptions, thrownError) {
-      console.log('Could not load airplanes')
+      console.log('Could not load airplane')
     },
   });
 
