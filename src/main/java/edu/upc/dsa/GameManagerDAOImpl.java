@@ -1,6 +1,6 @@
 package edu.upc.dsa;
 
-import edu.upc.dsa.models.GameResults;
+import edu.upc.dsa.transferObjects.GameResultsTO;
 import edu.upc.dsa.models.Player;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
@@ -215,19 +215,19 @@ public class GameManagerDAOImpl implements GameManager{
     }
 
     @Override
-    public void syncGameResults(GameResults gameResults, String userName) {
+    public void syncGameResults(GameResultsTO gameResultsTO, String userName) {
         logger.info("Sync new game results");
         User user = (User) session.getByUsername(User.class,userName);
         Player player = user.getPlayer();
-        player.setBitcoins(player.getBitcoins() + gameResults.getCollectedBitcoins());
-        player.setTimeOfFlight(player.getTimeOfFlight() + gameResults.getTimeOfFlight()/3600f);
-        if(player.getMaxDistance() < gameResults.getDistance()) player.setMaxDistance(gameResults.getDistance());
-        if(gameResults.getDistance() > 50 && gameResults.getDistance() < 1000) {
+        player.setBitcoins(player.getBitcoins() + gameResultsTO.getCollectedBitcoins());
+        player.setTimeOfFlight(player.getTimeOfFlight() + gameResultsTO.getTimeOfFlight()/3600f);
+        if(player.getMaxDistance() < gameResultsTO.getDistance()) player.setMaxDistance(gameResultsTO.getDistance());
+        if(gameResultsTO.getDistance() > 50 && gameResultsTO.getDistance() < 1000) {
             if (!insignias.playerHasInsignia(userName, "Centimetre")) {
                 insignias.addInsigniaToPlayer("Centimetre", user.getUserName());
             }
         }
-        if(gameResults.getDistance() > 1000) {
+        if(gameResultsTO.getDistance() > 1000) {
             if (!insignias.playerHasInsignia(userName, "World")) {
                 insignias.addInsigniaToPlayer("World", user.getUserName());
             }

@@ -1,11 +1,11 @@
-package edu.upc.dsa.models;
+package edu.upc.dsa.transferObjects;
 
-public class GameResults {
+public class GameResultsTO {
     private Integer collectedBitcoins;
     private Integer distance;
     private Integer timeOfFlight;
 
-    public GameResults() {
+    public GameResultsTO() {
     }
 
     public Integer getCollectedBitcoins() {

@@ -7,7 +7,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.eclipse.persistence.sessions.server.ClientSession;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.GenericEntity;
@@ -82,9 +81,9 @@ public class GameService {
 
     @Path("/uploadGame/{userName}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response uploadGame(GameResults gameResults, @PathParam("userName") String userName) {
+    public Response uploadGame(GameResultsTO gameResultsTO, @PathParam("userName") String userName) {
         if (!manager.existUser(userName))  return Response.status(404).build();
-        this.manager.syncGameResults(gameResults, userName);
+        this.manager.syncGameResults(gameResultsTO, userName);
         return Response.status(201).build();
     }
 

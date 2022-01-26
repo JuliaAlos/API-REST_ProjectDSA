@@ -1,9 +1,7 @@
 package edu.upc.dsa;
 
 
-import edu.upc.dsa.models.GameResults;
-import edu.upc.dsa.models.Plane;
-import edu.upc.dsa.models.Insignia;
+import edu.upc.dsa.transferObjects.GameResultsTO;
 import edu.upc.dsa.models.User;
 
 import java.util.List;
@@ -28,7 +26,7 @@ public interface GameManager {
 
     List<User> sortByRol();
 
-    void syncGameResults(GameResults gameResults, String userName);
+    void syncGameResults(GameResultsTO gameResultsTO, String userName);
 
     void setMoney(Integer bitcoins, String userName);
 

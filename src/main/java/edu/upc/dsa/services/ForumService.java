@@ -33,7 +33,7 @@ public class ForumService {
 
 
     @POST
-    @ApiOperation(value = "Add user", notes = "asdasd")
+    @ApiOperation(value = "Add user", notes = "asdasd", response = ForumEntry.class)
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Create")
 

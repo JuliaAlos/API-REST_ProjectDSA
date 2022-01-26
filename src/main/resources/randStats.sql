@@ -2,7 +2,7 @@ Use insignia;
 
 update Player set MaxDistance = (Select ceiling(rand()*100)) where True;
 update Player set TimeOfFlight = (Select ceiling(rand()*100)) where True;
-update Player set Bitcoins = (Select ceiling(rand()*100)) where True;
+update Player set Bitcoins = 1000 where Id = 'IdPau';
 
 
 update Player set Rol = 'Second Officer' where Id = 'IdArnau';
